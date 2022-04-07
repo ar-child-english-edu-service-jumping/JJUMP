@@ -1,24 +1,28 @@
 package com.jjump.java;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jjump.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-
+    BottomNavigationView tab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
 
         //fetching user profile
         /*
@@ -35,20 +39,30 @@ public class HomeActivity extends AppCompatActivity {
 
         //for hide state bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_home);
 
-        //camera button
-        ImageButton cameraBtn =  findViewById(R.id.btn_camera);
-        cameraBtn.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+        //bottom navigation view
+        tab=findViewById(R.id.tab);
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, new HomeFragment()).commit(); // initiallize
+
+        //바텀 네비게이션뷰 안의 아이템 설정
+        tab.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(HomeActivity.this,CameraXLivePreviewActivity.class);
-                startActivity(intent);
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    //item을 클릭시 id값을 가져와 FrameLayout에 fragment.xml띄우기
+                    case R.id.book_tab:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contatiner, new HomeFragment()).commit();
+                        break;
+                    case R.id.wordlist_tab:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contatiner, new WordlistFragment()).commit();
+                        break;
+                    case R.id.profile_tab:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contatiner, new HomeFragment()).commit();
+                        break;
+                }
+                return true;
             }
         });
-
-
 
     }
 }

@@ -22,7 +22,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.Task;
 import com.google.mlkit.vision.common.InputImage;
-import com.jjump.GraphicOverlay;
+import com.jjump.java.GraphicOverlay;
 import com.jjump.java.VisionProcessorBase;
 import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.Text.Element;

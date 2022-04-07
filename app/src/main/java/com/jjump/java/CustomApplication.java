@@ -1,4 +1,4 @@
-package com.jjump;
+package com.jjump.java;
 
 import android.app.Application;
 import android.content.Context;

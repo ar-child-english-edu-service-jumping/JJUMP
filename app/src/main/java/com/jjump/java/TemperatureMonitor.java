@@ -1,4 +1,4 @@
-package com.jjump;
+package com.jjump.java;
 
 import android.content.Context;
 import android.hardware.Sensor;

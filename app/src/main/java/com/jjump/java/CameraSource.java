@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jjump;
+package com.jjump.java;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -31,7 +31,7 @@ import android.view.SurfaceHolder;
 import android.view.WindowManager;
 import androidx.annotation.RequiresPermission;
 import com.google.android.gms.common.images.Size;
-import com.jjump.preference.PreferenceUtils;
+import com.jjump.java.preference.PreferenceUtils;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;

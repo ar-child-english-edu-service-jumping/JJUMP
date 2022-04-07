@@ -27,7 +27,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
@@ -43,12 +42,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory;
 import com.google.android.gms.common.annotation.KeepName;
 import com.google.mlkit.common.MlKitException;
-import com.jjump.CameraXViewModel;
-import com.jjump.GraphicOverlay;
 import com.jjump.R;
-import com.jjump.VisionImageProcessor;
 import com.jjump.java.textdetector.TextRecognitionProcessor;
-import com.jjump.preference.PreferenceUtils;
+import com.jjump.java.preference.PreferenceUtils;
 import com.google.mlkit.vision.text.korean.KoreanTextRecognizerOptions;
 
 /** Live preview demo app for ML Kit APIs using CameraX. */

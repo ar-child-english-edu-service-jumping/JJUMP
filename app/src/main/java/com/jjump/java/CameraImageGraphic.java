@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.jjump;
+package com.jjump.java;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import com.jjump.GraphicOverlay.Graphic;
+import com.jjump.java.GraphicOverlay.Graphic;
 
 /** Draw camera image to background. */
 public class CameraImageGraphic extends Graphic {

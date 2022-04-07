@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jjump;
+package com.jjump.java;
 
 /** Describing a frame info. */
 public class FrameMetadata {

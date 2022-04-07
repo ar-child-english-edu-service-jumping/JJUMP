@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jjump.preference;
+package com.jjump.java.preference;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -26,8 +26,8 @@ import androidx.annotation.StringRes;
 import androidx.camera.core.CameraSelector;
 import com.google.android.gms.common.images.Size;
 import com.google.common.base.Preconditions;
-import com.jjump.CameraSource;
-import com.jjump.CameraSource.SizePair;
+import com.jjump.java.CameraSource;
+import com.jjump.java.CameraSource.SizePair;
 import com.jjump.R;
 
 /** Utility class to retrieve shared preferences. */
