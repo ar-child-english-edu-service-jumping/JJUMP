@@ -13,7 +13,7 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintBottom_toTopOf="@+id/control"/>
 
-  <com.jjump.GraphicOverlay
+  <com.jjump.java.GraphicOverlay
       android:id="@+id/graphic_overlay"
       android:layout_width="0dp"
       android:layout_height="0dp"
@@ -63,19 +63,6 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:src="@drawable/bg_bottom_wave"/>
-
-    <TextView
-        android:id="@+id/testword"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:textColor="#181818"
-        android:fontFamily="@font/notosnaskr_medium"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:text="감지된 단어가 없습니다.\n 카메라에 단어를 비춰주세요."/>
 
     <ListView
         android:id="@+id/wordlistview2"

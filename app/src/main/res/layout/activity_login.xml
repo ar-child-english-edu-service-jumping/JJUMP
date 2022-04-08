@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/backgroud_wave_login"
-        android:scaleType="fitXY"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="390dp"
-        android:src="@drawable/bg_login_wave"/>
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_login_wave"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
         android:id="@+id/illust"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_width="300dp"
         android:layout_height="250dp"
         android:layout_marginTop="240dp"
-        android:src="@drawable/ic_illust"/>
+        android:src="@drawable/ic_illust"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/first_line"
@@ -32,8 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="56dp"
         android:layout_marginTop="36dp"
-        android:text="눈으로 말하는 영어"
         android:fontFamily="@font/notosanskr_bold"
+        android:text="눈으로 말하는 영어"
         android:textColor="#181818"
         android:textSize="26dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -43,9 +43,9 @@
         android:id="@+id/second_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="@id/first_line"
-        app:layout_constraintTop_toBottomOf="@id/first_line"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@id/first_line">
 
         <ImageView
             android:layout_width="65dp"
@@ -56,10 +56,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 쩜프와 함께"
             android:fontFamily="@font/notosnaskr_medium"
+            android:text=" 쩜프와 함께"
             android:textColor="#666666"
-            android:textSize="14dp"/>
+            android:textSize="14dp" />
 
     </LinearLayout>
 
@@ -67,36 +67,36 @@
         android:id="@+id/third_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/first_line"
-        app:layout_constraintLeft_toLeftOf="@id/second_line"
         android:layout_marginTop="25dp"
-        android:text="재미있는 독서습관을 만들어 보아요!"
         android:fontFamily="@font/notosnaskr_medium"
+        android:text="재미있는 독서습관을 만들어 보아요!"
         android:textColor="#666666"
-        android:textSize="14dp"/>
+        android:textSize="14dp"
+        app:layout_constraintLeft_toLeftOf="@id/second_line"
+        app:layout_constraintTop_toBottomOf="@id/first_line" />
 
     <TextView
         android:id="@+id/social_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:fontFamily="@font/notosnaskr_medium"
+        android:text="소셜 계정으로 로그인하기"
+        android:textColor="#666666"
+        android:textSize="13dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/illust"
-        android:layout_marginTop="55dp"
-        android:text="소셜 계정으로 로그인하기"
-        android:fontFamily="@font/notosnaskr_medium"
-        android:textColor="#666666"
-        android:textSize="13dp"/>
+        app:layout_constraintTop_toBottomOf="@id/illust" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/kakao_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="@id/illust"
-        app:layout_constraintTop_toBottomOf="@id/social_line"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="7dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="@id/illust"
+        app:layout_constraintTop_toBottomOf="@id/social_line">
 
         <FrameLayout
             android:id="@+id/btn_kakao_container"
@@ -126,15 +126,15 @@
             android:id="@+id/text_kakao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="@id/btn_kakao_container"
-            app:layout_constraintRight_toRightOf="@id/btn_kakao_container"
-            app:layout_constraintTop_toTopOf="@id/btn_kakao_container"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="64dp"
             android:fontFamily="@font/notosnaskr_medium"
             android:text="카카오"
-            android:layout_marginTop="64dp"
-            android:layout_gravity="center_horizontal"
             android:textColor="#666666"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            app:layout_constraintLeft_toLeftOf="@id/btn_kakao_container"
+            app:layout_constraintRight_toRightOf="@id/btn_kakao_container"
+            app:layout_constraintTop_toTopOf="@id/btn_kakao_container" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -142,35 +142,49 @@
         android:id="@+id/google_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="@id/illust"
-        app:layout_constraintTop_toBottomOf="@id/social_line"
-        android:layout_marginRight="60dp"
         android:layout_marginTop="7dp"
-        android:orientation="vertical">
+        android:layout_marginRight="60dp"
+        android:orientation="vertical"
+        app:layout_constraintRight_toRightOf="@id/illust"
+        app:layout_constraintTop_toBottomOf="@id/social_line">
 
-        <ImageButton
-            android:id="@+id/btn_google"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+        <FrameLayout
+            android:id="@+id/btn_google_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="@id/google_login"
-            app:layout_constraintTop_toTopOf="@id/google_login"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/btn_google"/>
+            app:layout_constraintTop_toTopOf="@id/google_login">
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btn_google"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:scaleType="fitXY"
+                android:src="@drawable/btn_google" />
+
+            <ImageView
+                android:id="@+id/icon_google"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/btn_google" />
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/text_google"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="@id/btn_google"
-            app:layout_constraintRight_toRightOf="@id/btn_google"
-            app:layout_constraintTop_toTopOf="@id/btn_google"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="64dp"
             android:fontFamily="@font/notosnaskr_medium"
             android:text="구글"
-            android:layout_marginTop="64dp"
-            android:layout_gravity="center_horizontal"
             android:textColor="#666666"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            app:layout_constraintLeft_toLeftOf="@id/btn_google_container"
+            app:layout_constraintRight_toRightOf="@id/btn_google_container"
+            app:layout_constraintTop_toTopOf="@id/btn_google_container" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

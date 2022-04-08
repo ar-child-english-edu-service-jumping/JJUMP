@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jjump;
+package com.jjump.java;
 
 import android.annotation.TargetApi;
 import android.content.ContentResolver;

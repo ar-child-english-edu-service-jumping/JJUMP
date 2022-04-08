@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jjump;
+package com.jjump.java;
 
 import android.os.Build.VERSION_CODES;
 import androidx.annotation.RequiresApi;
