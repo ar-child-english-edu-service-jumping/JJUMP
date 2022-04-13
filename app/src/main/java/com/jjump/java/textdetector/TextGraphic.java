@@ -31,6 +31,8 @@ import com.google.mlkit.vision.text.Text.Element;
 import com.google.mlkit.vision.text.Text.Line;
 import com.google.mlkit.vision.text.Text.TextBlock;
 
+import java.util.ArrayList;
+
 
 /**
  * Graphic instance for rendering TextBlock position, size, and ID within an associated graphic
@@ -53,9 +55,14 @@ public class TextGraphic extends Graphic {
   private final Boolean shouldGroupTextInBlocks;
   private final Boolean showLanguageTag;
 
+  public final int maxWordNum=15;                 // Set maximum word list number shown in screen
+  public static ArrayList<String> textContainer;  // Array list for holding recognized words
+
   TextGraphic(
       GraphicOverlay overlay, Text text, boolean shouldGroupTextInBlocks, boolean showLanguageTag) {
     super(overlay);
+
+    textContainer=new ArrayList<>();
 
     this.text = text;
     this.shouldGroupTextInBlocks = shouldGroupTextInBlocks;

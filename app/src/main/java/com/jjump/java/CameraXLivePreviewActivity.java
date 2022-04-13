@@ -43,6 +43,7 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory;
 import com.google.android.gms.common.annotation.KeepName;
 import com.google.mlkit.common.MlKitException;
 import com.jjump.R;
+import com.jjump.java.textdetector.TextGraphic;
 import com.jjump.java.textdetector.TextRecognitionProcessor;
 import com.jjump.java.preference.PreferenceUtils;
 import com.google.mlkit.vision.text.korean.KoreanTextRecognizerOptions;

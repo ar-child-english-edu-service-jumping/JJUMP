@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contatiner, new WordlistFragment()).commit();
                         break;
                     case R.id.profile_tab:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contatiner, new HomeFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contatiner, new ProfileFragment()).commit();
                         break;
                 }
                 return true;

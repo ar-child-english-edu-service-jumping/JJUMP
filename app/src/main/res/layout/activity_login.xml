@@ -105,14 +105,6 @@
             app:layout_constraintLeft_toLeftOf="@id/kakao_login"
             app:layout_constraintTop_toTopOf="@id/kakao_login">
 
-            <com.kakao.usermgmt.LoginButton
-                android:id="@+id/btn_kakao"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:scaleType="fitXY"
-                android:src="@drawable/btn_kakao" />
 
             <ImageView
                 android:id="@+id/icon_kakao"
