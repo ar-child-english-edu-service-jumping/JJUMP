@@ -16,6 +16,7 @@
 
 package com.jjump.java;
 
+import android.content.Intent;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
@@ -40,13 +41,19 @@ import androidx.camera.view.PreviewView;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.gms.common.annotation.KeepName;
 import com.google.mlkit.common.MlKitException;
 import com.jjump.R;
+import com.jjump.java.adapter.TextAdapter;
 import com.jjump.java.textdetector.TextGraphic;
 import com.jjump.java.textdetector.TextRecognitionProcessor;
 import com.jjump.java.preference.PreferenceUtils;
 import com.google.mlkit.vision.text.korean.KoreanTextRecognizerOptions;
+
+import java.util.ArrayList;
 
 /** Live preview demo app for ML Kit APIs using CameraX. */
 @KeepName
@@ -59,8 +66,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
   private PreviewView previewView;
   private GraphicOverlay graphicOverlay;
 
-  //테스트 중//
-  private ListView listView2;
 
   @Nullable private ProcessCameraProvider cameraProvider;
   @Nullable private Preview previewUseCase;
@@ -71,6 +76,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
   private String selectedModel = TEXT_RECOGNITION_KOREAN;
   private int lensFacing = CameraSelector.LENS_FACING_BACK;
   private CameraSelector cameraSelector;
+
+  public static TextAdapter textAdapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +111,13 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
               cameraProvider = provider;
               bindAllCameraUseCases();
             });
+
+    // set text adapter
+    RecyclerView recyclerView=findViewById(R.id.textContainer);
+    recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+    textAdapter=new TextAdapter(HomeActivity.textContainer);
+    recyclerView.setAdapter(textAdapter);
   }
 
   @Override
@@ -252,5 +266,10 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         });
 
     cameraProvider.bindToLifecycle(/* lifecycleOwner= */ this, cameraSelector, analysisUseCase);
+  }
+
+  // move to ar session, when recognized word clicked, call by text adapter
+  public void moveToArSession(){
+    Intent intent=new Intent( this,CameraXLivePreviewActivity.class);
   }
 }

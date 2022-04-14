@@ -24,6 +24,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.Log;
+
+import com.jjump.java.CameraXLivePreviewActivity;
 import com.jjump.java.GraphicOverlay;
 import com.jjump.java.GraphicOverlay.Graphic;
 import com.google.mlkit.vision.text.Text;
@@ -91,7 +93,7 @@ public class TextGraphic extends Graphic {
     Log.d(TAG, "Text is: " + text.getText());
 
     HomeActivity.endTime = System.currentTimeMillis();
-    if (HomeActivity.endTime - HomeActivity.startTime >= 1000) {
+    if (HomeActivity.endTime - HomeActivity.startTime >= 2000) {
       HomeActivity.startTime = HomeActivity.endTime;
       for (TextBlock textBlock : text.getTextBlocks()) {
         // Renders the text at the bottom of the box.
@@ -144,6 +146,7 @@ public class TextGraphic extends Graphic {
           }
         }
       }
+      CameraXLivePreviewActivity.textAdapter.notifyDataSetChanged();
       Log.d("Test Container", HomeActivity.textContainer.toString());
     }
 
