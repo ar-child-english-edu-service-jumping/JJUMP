@@ -7,8 +7,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.work.Data;
-
 import com.jjump.R;
 import com.jjump.java.data.WordlistDates;
 

@@ -1,16 +1,21 @@
 package com.jjump.java;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.Button;
+import android.widget.ImageButton;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.jjump.R;
 import com.jjump.java.adapter.RecyclerAdapter;
 import com.jjump.java.data.WordlistDates;
@@ -29,6 +34,15 @@ public class WordlistFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_wordlist, container, false);
 
+        ImageButton btn_quiz = (ImageButton) rootView.findViewById(R.id.btn_quiz);
+        btn_quiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),QuizBottomActivity.class);
+                startActivity(intent);
+            }
+        });
+
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -44,7 +58,7 @@ public class WordlistFragment extends Fragment {
 
     private void getData() {
         // 임의의 데이터입니다.
-        List<String> listDates = Arrays.asList("2022.03.17", "2022.03.16", "2022.03.15", "2022.03.14");
+        List<String> listDates = Arrays.asList("2022.03.17", "2022.03.16", "2022.03.15", "2022.03.14", "2022.03.13");
 
         for (int i = 0; i < listDates.size(); i++) {
             // 각 List의 값들을 data 객체에 set 해줍니다.

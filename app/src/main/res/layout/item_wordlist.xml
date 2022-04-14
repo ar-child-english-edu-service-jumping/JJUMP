@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     android:padding="8dp"
     android:gravity="center_vertical"
-    android:layout_marginBottom="8dp"
-    android:background="@android:color/white">
+    android:layout_marginBottom="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,24 +26,50 @@
 
         <ImageButton
             android:id="@+id/btn_quiz"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="220dp"
-            android:src="@drawable/btn_quiz"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="255dp"
+            android:src="@drawable/btn_more"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"/>
 
     </LinearLayout>
 
-    <HorizontalScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_wordlist"
-            android:layout_width="0dp"
-            android:layout_height="0dp"/>
+        <TextView
+            android:layout_width="125dp"
+            android:layout_height="98dp"
+            android:background="@drawable/btn_one_word"
+            android:fontFamily="@font/notosanskr_bold"
+            android:textSize="14dp"
+            android:gravity="center"
+            android:textColor="#181818"
+            android:text="Cat"/>
 
-    </HorizontalScrollView>
+        <TextView
+            android:layout_width="125dp"
+            android:layout_height="98dp"
+            android:background="@drawable/btn_one_word"
+            android:fontFamily="@font/notosanskr_bold"
+            android:textSize="14dp"
+            android:gravity="center"
+            android:textColor="#181818"
+            android:text="Fishing"/>
+
+        <TextView
+            android:layout_width="125dp"
+            android:layout_height="98dp"
+            android:background="@drawable/btn_one_word"
+            android:fontFamily="@font/notosanskr_bold"
+            android:textSize="14dp"
+            android:gravity="center"
+            android:textColor="#181818"
+            android:text="Sleep"/>
+
+    </LinearLayout>
 
 </LinearLayout>
