@@ -47,8 +47,6 @@ public class HomeActivity extends AppCompatActivity {
 
         // array list for holding recognized text
         textContainer = new ArrayList<>();
-        textContainer.add("asdasd");
-        textContainer.add("jisoo");
 
         //for hide state bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);

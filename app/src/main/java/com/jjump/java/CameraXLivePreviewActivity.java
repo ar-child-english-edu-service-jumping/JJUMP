@@ -118,6 +118,14 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
     textAdapter=new TextAdapter(HomeActivity.textContainer);
     recyclerView.setAdapter(textAdapter);
+
+    textAdapter.setOnItemClickListener(new TextAdapter.OnItemClickListener() {
+      @Override
+      public void onItemClick(View v, int position) {
+        Intent intent=new Intent(getApplicationContext(),ArActivity.class);
+        startActivity(intent);
+      }
+    });
   }
 
   @Override

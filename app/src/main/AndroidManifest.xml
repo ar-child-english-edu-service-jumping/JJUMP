@@ -10,9 +10,7 @@
     minSdkVersion value. In code, will check SDK version, before calling CameraX
     APIs.
     -->
-    <uses-sdk tools:overrideLibrary=
-        " androidx.camera.camera2, androidx.camera.core,
-          androidx.camera.view, androidx.camera.lifecycle" />
+    <uses-sdk tools:overrideLibrary=" androidx.camera.camera2, androidx.camera.core,           androidx.camera.view, androidx.camera.lifecycle" />
 
     <uses-feature android:name="android.hardware.camera" />
 
@@ -32,22 +30,25 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".java.WordlistActivity"
-            android:exported="true" />
+            android:name=".java.ArActivity"
+            android:exported="false" />
         <activity
             android:name=".java.HomeActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
+
         <activity
             android:name=".java.CameraXLivePreviewActivity"
             android:exported="true" />
         <activity
             android:name=".java.LoginActivity"
             android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
 
         <meta-data
@@ -60,11 +61,9 @@
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
-
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />
-
     </application>
 
 </manifest>
