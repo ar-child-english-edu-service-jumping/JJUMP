@@ -15,9 +15,15 @@ import android.widget.ImageButton;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jjump.R;
 
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity {
 
     BottomNavigationView tab;
+
+    public static ArrayList<String> textContainer;  // Array list for holding recognized words
+    public static long startTime=0;
+    public static long endTime=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,9 @@ public class HomeActivity extends AppCompatActivity {
             Uri personPhoto = acct.getPhotoUrl();
         }
         */
+
+        // array list for holding recognized text
+        textContainer = new ArrayList<>();
 
         //for hide state bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);

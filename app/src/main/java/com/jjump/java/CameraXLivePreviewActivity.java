@@ -92,25 +92,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
       Log.d(TAG, "graphicOverlay is null");
     }
 
-    graphicOverlay.listView = findViewById(R.id.wordlistview1);
-    ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,
-            graphicOverlay.overlayarrayList);
-    graphicOverlay.listView.setAdapter(adapter);
-    graphicOverlay.adapter = adapter;
-    graphicOverlay.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        Toast.makeText(CameraXLivePreviewActivity.this,
-                graphicOverlay.overlayarrayList.get(position), Toast.LENGTH_SHORT).show();
-
-      }
-    });
-
-    ///테스트 중 ///
-    listView2 = findViewById(R.id.wordlistview2);
-    listView2.setAdapter(adapter);
-
     ToggleButton facingSwitch = findViewById(R.id.facing_switch);
     facingSwitch.setOnCheckedChangeListener(this);
 
