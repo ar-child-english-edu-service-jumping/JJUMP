@@ -1,0 +1,74 @@
+{
+  animations: [
+    {
+      path: 'sampledata/models/chuteira.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material_156',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: '18',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/models/chuteira.fbx',
+    name: 'chuteira',
+    recenter: 'root',
+    scale: 45.2500940000000007,
+  },
+  samplers: [
+    {
+      file: 'sampledata/models\\chuteira.fbm\\18.png',
+      name: '18',
+      pipeline_name: 'chuteira.fbm\\18.png',
+    },
+    {
+      file: 'sampledata/models\\chuteira.fbm\\20.png',
+      name: '20',
+      pipeline_name: 'chuteira.fbm\\20.png',
+    },
+  ],
+  version: '0.54:2',
+}

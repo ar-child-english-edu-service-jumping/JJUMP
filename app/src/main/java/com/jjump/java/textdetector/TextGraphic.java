@@ -30,6 +30,9 @@ import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.Text.Element;
 import com.google.mlkit.vision.text.Text.Line;
 import com.google.mlkit.vision.text.Text.TextBlock;
+import com.jjump.java.HomeActivity;
+
+import java.util.ArrayList;
 
 
 /**
@@ -53,8 +56,10 @@ public class TextGraphic extends Graphic {
   private final Boolean shouldGroupTextInBlocks;
   private final Boolean showLanguageTag;
 
+  public final int maxWordNum = 15;                 // Set maximum word list number shown in screen
+
   TextGraphic(
-      GraphicOverlay overlay, Text text, boolean shouldGroupTextInBlocks, boolean showLanguageTag) {
+          GraphicOverlay overlay, Text text, boolean shouldGroupTextInBlocks, boolean showLanguageTag) {
     super(overlay);
 
     this.text = text;
@@ -78,54 +83,75 @@ public class TextGraphic extends Graphic {
     postInvalidate();
   }
 
-  /** Draws the text block annotations for position, size, and raw value on the supplied canvas. */
+  /**
+   * Draws the text block annotations for position, size, and raw value on the supplied canvas.
+   */
   @Override
   public void draw(Canvas canvas) {
     Log.d(TAG, "Text is: " + text.getText());
 
-    for (TextBlock textBlock : text.getTextBlocks()) {
-      // Renders the text at the bottom of the box.
+    HomeActivity.endTime = System.currentTimeMillis();
+    if (HomeActivity.endTime - HomeActivity.startTime >= 1000) {
+      HomeActivity.startTime = HomeActivity.endTime;
+      for (TextBlock textBlock : text.getTextBlocks()) {
+        // Renders the text at the bottom of the box.
 //      Log.d(TAG, "TextBlock text is: " + textBlock.getText());
 //      Log.d(TAG, "TextBlock boundingbox is: " + textBlock.getBoundingBox());
 //      Log.d(TAG, "TextBlock cornerpoint is: " + Arrays.toString(textBlock.getCornerPoints()));
-      if (shouldGroupTextInBlocks) {
-        String text =
-            showLanguageTag
-                ? String.format(
-                    TEXT_WITH_LANGUAGE_TAG_FORMAT,
-                    textBlock.getRecognizedLanguage(),
-                    textBlock.getText())
-                : textBlock.getText();
-        drawText(
-            text,
-            new RectF(textBlock.getBoundingBox()),
-            TEXT_SIZE * textBlock.getLines().size() + 2 * STROKE_WIDTH,
-            canvas);
-      } else {
-        for (Line line : textBlock.getLines()) {
+        if (shouldGroupTextInBlocks) {
+          String text =
+                  showLanguageTag
+                          ? String.format(
+                          TEXT_WITH_LANGUAGE_TAG_FORMAT,
+                          textBlock.getRecognizedLanguage(),
+                          textBlock.getText())
+                          : textBlock.getText();
+          drawText(
+                  text,
+                  new RectF(textBlock.getBoundingBox()),
+                  TEXT_SIZE * textBlock.getLines().size() + 2 * STROKE_WIDTH,
+                  canvas);
+        } else {
+          for (Line line : textBlock.getLines()) {
 //          Log.d(TAG, "Line text is: " + line.getText());
 //          Log.d(TAG, "Line boundingbox is: " + line.getBoundingBox());
 //          Log.d(TAG, "Line cornerpoint is: " + Arrays.toString(line.getCornerPoints()));
-          String text =
-              showLanguageTag
-                  ? String.format(
-                      TEXT_WITH_LANGUAGE_TAG_FORMAT, line.getRecognizedLanguage(), line.getText())
-                  : line.getText();
-          drawText(text, new RectF(line.getBoundingBox()), TEXT_SIZE + 2 * STROKE_WIDTH, canvas);
+            String text =
+                    showLanguageTag
+                            ? String.format(
+                            TEXT_WITH_LANGUAGE_TAG_FORMAT, line.getRecognizedLanguage(), line.getText())
+                            : line.getText();
+            drawText(text, new RectF(line.getBoundingBox()), TEXT_SIZE + 2 * STROKE_WIDTH, canvas);
 
-          for (Element element : line.getElements()) {
-            Log.d(TAG, "Element text is: " + element.getText());
+            for (Element element : line.getElements()) {
+              Log.d(TAG, "Element text is: " + element.getText());
 //            Log.d(TAG, "Element boundingbox is: " + element.getBoundingBox());
 //            Log.d(TAG, "Element cornerpoint is: " + Arrays.toString(element.getCornerPoints()));
 //            Log.d(TAG, "Element language is: " + element.getRecognizedLanguage());
 
-            overlay.overlayarrayList.add(element.getText());
+              //overlay.overlayarrayList.add(element.getText());
+
+              ///////////// insert text element in text container/////////////
+              if (element.getText().length() >= 3) {
+                if (!HomeActivity.textContainer.contains(element.getText())) {     //only for the new word
+                  if (HomeActivity.textContainer.size() >= maxWordNum)               //if the place for new word not exists
+                    HomeActivity.textContainer.remove(maxWordNum - 1);
+                  HomeActivity.textContainer.add(0, element.getText());
+                }
+              }
+
+            }
           }
         }
       }
+      Log.d("Test Container", HomeActivity.textContainer.toString());
     }
-    overlay.adapter.notifyDataSetChanged();
+
+
+    //overlay.adapter.notifyDataSetChanged();
   }
+
+
 
   private void drawText(String text, RectF rect, float textHeight, Canvas canvas) {
     // If the image is flipped, the left will be translated to right, and the right to left.
