@@ -23,4 +23,215 @@
         android:src="@drawable/ic_logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/user_info"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ic_logo">
+        <ImageView
+            android:id="@+id/iv_profile_picture"
+            android:layout_gravity="center_vertical"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="5dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/round_button"/>
+        <TextView
+            android:id="@+id/tv_child_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:text="아이의 이름을 알려주세요!"
+            android:textSize="14dp"
+            android:textColor="#A4A4A9"
+            android:fontFamily="@font/notosnaskr_medium"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_info"
+        android:src="@drawable/horizontal_line" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/line1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="55dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/report_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="학습 리포트"
+                    android:textSize="14dp"
+                    android:textColor="#A4A4A9"
+                    android:fontFamily="@font/notosanskr_bold"/>
+                <TextView
+                    android:id="@+id/total_word_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:text="총 36개의 단어를 배웠어요!"
+                    android:textSize="16dp"
+                    android:textColor="#181818"
+                    android:fontFamily="@font/notosnaskr_medium"/>
+                <TextView
+                    android:id="@+id/study_rate_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="학습률이 높아요!"
+                    android:textSize="12dp"
+                    android:textColor="#181818"
+                    android:fontFamily="@font/notosnaskr_medium"/>
+                <com.dinuscxj.progressbar.CircleProgressBar
+                    android:id="@+id/circle_bar1"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_gravity="center_horizontal"
+                    app:progress_end_color="#EC8E7A"
+                    app:progress_start_color="#EC8E7A"
+                    app:progress_stroke_cap="round"
+                    app:progress_stroke_width="17dp "
+                    app:progress_text_color="#181818"
+                    app:progress_text_size="17dp"
+                    app:style="solid_line"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/horizontal_line" />
+
+            <LinearLayout
+                android:id="@+id/user_service_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="기타"
+                    android:textSize="14dp"
+                    android:textColor="#A4A4A9"
+                    android:fontFamily="@font/notosanskr_bold"/>
+                <LinearLayout
+                    android:id="@+id/logout_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="로그아웃"
+                        android:textSize="16dp"
+                        android:textColor="#181818"
+                        android:fontFamily="@font/notosnaskr_medium"/>
+                    <ImageButton
+                        android:id="@+id/btn_logout"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="270dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/btn_right"
+                        android:background="#00FFFFFF"
+                        android:scaleType="center"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/contact_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="1:1 문의하기"
+                        android:textSize="16dp"
+                        android:textColor="#181818"
+                        android:fontFamily="@font/notosnaskr_medium"/>
+                    <ImageButton
+                        android:id="@+id/btn_contact"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="244dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/btn_right"
+                        android:background="#00ffffff"
+                        android:scaleType="center"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/resign_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="회원탈퇴"
+                        android:textSize="16dp"
+                        android:textColor="#181818"
+                        android:fontFamily="@font/notosnaskr_medium"/>
+                    <ImageButton
+                        android:id="@+id/btn_resign"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="270dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/btn_right"
+                        android:background="#00FFFFFF"
+                        android:scaleType="center"/>
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
