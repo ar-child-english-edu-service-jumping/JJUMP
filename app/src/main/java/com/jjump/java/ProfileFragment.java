@@ -1,12 +1,16 @@
 package com.jjump.java;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -22,6 +26,8 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
     CircleProgressBar circleProgressBar1;
     TextView total_word_number;
     TextView study_rate_number;
+    TextView tv_child_name;
+    String child_name;
     private static final String DEFAULT_PATTERN = "%d%%";
     private int studyRate = 0;
     private int totalWordCount = 0;
@@ -36,6 +42,7 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
         circleProgressBar1 = rootView.findViewById(R.id.circle_bar1);
         total_word_number = rootView.findViewById(R.id.total_word_number);
         study_rate_number = rootView.findViewById(R.id.study_rate_number);
+        tv_child_name = rootView.findViewById(R.id.tv_child_name);
 
         btn_contact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +74,26 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
         } else if(80 < studyRate && studyRate < 100 ) {
             study_rate_number.setText("학습률이 매우 높아요 😍");
         }
+        // open dialog to enter child name
+        tv_child_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChildNameDialog dialog = new ChildNameDialog(getActivity());
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setDialogListener(new ChildNameDialog.CustomDialogListener() {
+                    @Override
+                    public void onPositiveClicked(String childName) {
+                        child_name = childName;
+                        tv_child_name.setText(child_name);
+                    }
+                    @Override
+                    public void onNegativeClicked() {
+                    }
+                });
+                dialog.show();
+            }
+        });
 
         return rootView;
     }
