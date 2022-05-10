@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.dinuscxj.progressbar.CircleProgressBar;
 import com.google.ar.sceneform.rendering.ModelRenderable;
@@ -19,8 +20,11 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
 
     ImageButton btn_contact;
     CircleProgressBar circleProgressBar1;
+    TextView total_word_number;
+    TextView study_rate_number;
     private static final String DEFAULT_PATTERN = "%d%%";
     private int studyRate = 0;
+    private int totalWordCount = 0;
 
 
     @Override
@@ -29,6 +33,10 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
         ViewGroup rootView=(ViewGroup) inflater.inflate(R.layout.fragment_profile, container, false);
 
         btn_contact = rootView.findViewById(R.id.btn_contact);
+        circleProgressBar1 = rootView.findViewById(R.id.circle_bar1);
+        total_word_number = rootView.findViewById(R.id.total_word_number);
+        study_rate_number = rootView.findViewById(R.id.study_rate_number);
+
         btn_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,10 +49,24 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
                 startActivity(email);
             }
         });
-        // get 학습률 to studyRate and update progress bar
-        studyRate = 68;
-        circleProgressBar1 = rootView.findViewById(R.id.circle_bar1);
+
+        //get 총 저장한 단어 개수, save to totalWordCount and settext
+        total_word_number.setText("총 " + totalWordCount + "개의 단어를 배웠어요!");
+
+        // get 학습률, save to studyRate and update progress bar
+        studyRate = 15;
         circleProgressBar1.setProgress(studyRate);
+
+        // studyRate에 대해 지정된 메세지 출력
+        if (studyRate <= 20){
+            study_rate_number.setText("함께 꾸준히 독서해 보아요 🤓");
+        } else if(20 < studyRate && studyRate <= 50 ) {
+            study_rate_number.setText("잘하고 있어요 🥳");
+        } else if(50 < studyRate && studyRate < 80 ) {
+            study_rate_number.setText("학습률이 높아요 🤩");
+        } else if(80 < studyRate && studyRate < 100 ) {
+            study_rate_number.setText("학습률이 매우 높아요 😍");
+        }
 
         return rootView;
     }
