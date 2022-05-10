@@ -124,6 +124,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
       public void onItemClick(View v, int position) {
         Intent intent=new Intent(getApplicationContext(),ArActivity.class);
         startActivity(intent);
+        finish();
       }
     });
   }
@@ -274,10 +275,5 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         });
 
     cameraProvider.bindToLifecycle(/* lifecycleOwner= */ this, cameraSelector, analysisUseCase);
-  }
-
-  // move to ar session, when recognized word clicked, call by text adapter
-  public void moveToArSession(){
-    Intent intent=new Intent( this,CameraXLivePreviewActivity.class);
   }
 }
