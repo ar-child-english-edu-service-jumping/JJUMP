@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.jjump.R;
+import com.jjump.java.QuizBottomActivity;
 import com.jjump.java.adapter.RecyclerAdapter;
 import com.jjump.java.data.WordlistDates;
 
@@ -38,7 +39,9 @@ public class WordlistFragment extends Fragment {
         btn_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),QuizBottomActivity.class);
+
+                Intent intent = new Intent(getActivity(), QuizBottomActivity.class);
+
                 startActivity(intent);
             }
         });
@@ -58,7 +61,9 @@ public class WordlistFragment extends Fragment {
 
     private void getData() {
         // 임의의 데이터입니다.
-        List<String> listDates = Arrays.asList("2022.03.17", "2022.03.16", "2022.03.15", "2022.03.14", "2022.03.13");
+
+        List<String> listDates = Arrays.asList("2022.03.17", "2022.03.16", "2022.03.15", "2022.03.14", "2022.03.13","2022.03.07","2022.02.22");
+
 
         for (int i = 0; i < listDates.size(); i++) {
             // 각 List의 값들을 data 객체에 set 해줍니다.

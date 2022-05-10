@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jjump.R;
+import com.jjump.java.adapter.TextAdapter;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
     public static ArrayList<String> textContainer;  // Array list for holding recognized words
     public static long startTime=0;
     public static long endTime=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
