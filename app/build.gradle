@@ -3,13 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.jjump"
-        minSdkVersion 19
+        minSdkVersion 24
         multiDexEnabled true
-        targetSdkVersion 31
+        targetSdkVersion 28
 
         versionCode 11
         versionName "1.11"
@@ -71,7 +71,7 @@ dependencies {
 
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.google.guava:guava:27.1-android'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
@@ -106,9 +106,8 @@ dependencies {
 
     // Provides ArFragment, and other Sceneform UX resources:
     implementation "com.google.ar.sceneform.ux:sceneform-ux:1.15.0"
-    implementation 'com.kakao.sdk:usermgmt:1.30.7' // 카카오 로그인
 
-    implementation 'androidx.work:work-runtime-ktx:2.7.0'
+
 
     implementation 'com.google.android.gms:play-services-auth:20.1.0' // 구글 로그인
 
@@ -122,3 +121,9 @@ configurations {
     // com.google.guava:guava and com.google.guava:listenablefuture together.
     all*.exclude group: 'com.google.guava', module: 'listenablefuture'
 }
+apply plugin: 'com.google.ar.sceneform.plugin'
+
+sceneform.asset('sampledata/models/chuteira.fbx',
+        'default',
+        'sampledata/models/chuteira.sfa',
+        'src/main/res/raw/chuteira')
