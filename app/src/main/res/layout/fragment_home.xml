@@ -27,11 +27,10 @@
 
     <ImageView
         android:id="@+id/ic_tree1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="268dp"
-        android:src="@drawable/ic_tree1"
-        app:layout_constraintHorizontal_bias="0.52"
+        android:layout_width="560dp"
+        android:layout_height="560dp"
+        android:src="@drawable/gif_tree1"
+        android:layout_marginTop="47dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/backgroud_wave" />

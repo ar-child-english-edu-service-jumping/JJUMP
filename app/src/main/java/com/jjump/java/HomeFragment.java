@@ -11,6 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import com.jjump.R;
 
@@ -32,6 +36,11 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        //나무 성장 애니메이션 gif
+        ImageView ic_tree = rootView.findViewById(R.id.ic_tree1);
+        GlideDrawableImageViewTarget gif_tree1 = new GlideDrawableImageViewTarget(ic_tree);
+        Glide.with(getActivity()).load(R.drawable.gif_tree1).into(gif_tree1);
         return rootView;
     }
 }
