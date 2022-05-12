@@ -96,7 +96,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="16dp"
                     android:text="총 36개의 단어를 배웠어요!"
-                    android:textSize="25dp"
+                    android:textSize="22dp"
                     android:textColor="#181818"
                     android:fontFamily="@font/dodamdodam"/>
                 <TextView
@@ -106,7 +106,7 @@
                     android:layout_marginStart="23dp"
                     android:layout_marginTop="5dp"
                     android:text="학습률이 높아요!"
-                    android:textSize="20dp"
+                    android:textSize="19dp"
                     android:textColor="#181818"
                     android:fontFamily="@font/dodamdodam"/>
                 <com.dinuscxj.progressbar.CircleProgressBar
