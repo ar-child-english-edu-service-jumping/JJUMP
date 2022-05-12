@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
     android:gravity="center_vertical"
@@ -40,35 +42,116 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
+        <com.wajahatkarim3.easyflipview.EasyFlipView
             android:layout_width="125dp"
             android:layout_height="98dp"
-            android:background="@drawable/btn_one_word"
-            android:fontFamily="@font/notosanskr_bold"
-            android:textSize="14dp"
-            android:gravity="center"
-            android:textColor="#181818"
-            android:text="Cat"/>
+            app:autoFlipBack="false"
+            app:flipDuration="400"
+            app:flipEnabled="true"
+            app:flipFrom="right"
+            app:flipOnTouch="true"
+            app:flipType="horizontal">
 
-        <TextView
-            android:layout_width="125dp"
-            android:layout_height="98dp"
-            android:background="@drawable/btn_one_word"
-            android:fontFamily="@font/notosanskr_bold"
-            android:textSize="14dp"
-            android:gravity="center"
-            android:textColor="#181818"
-            android:text="Fishing"/>
+            <!-- Back Layout Goes Here -->
+            <TextView
+                android:id="@+id/card_back"
+                android:layout_width="125dp"
+                android:layout_height="98dp"
+                android:background="@drawable/btn_one_word"
+                android:fontFamily="@font/notosanskr_bold"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:textColor="#181818"
+                android:text="고양이"/>
 
-        <TextView
+
+            <!-- Front Layout Goes Here -->
+            <TextView
+                android:id="@+id/card_front"
+                android:layout_width="125dp"
+                android:layout_height="98dp"
+                android:background="@drawable/btn_one_word"
+                android:fontFamily="@font/notosanskr_bold"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:textColor="#181818"
+                android:text="Cat"/>
+
+        </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+        <com.wajahatkarim3.easyflipview.EasyFlipView
             android:layout_width="125dp"
             android:layout_height="98dp"
-            android:background="@drawable/btn_one_word"
-            android:fontFamily="@font/notosanskr_bold"
-            android:textSize="14dp"
-            android:gravity="center"
-            android:textColor="#181818"
-            android:text="Sleep"/>
+            app:autoFlipBack="false"
+            app:flipDuration="400"
+            app:flipEnabled="true"
+            app:flipFrom="right"
+            app:flipOnTouch="true"
+            app:flipType="horizontal">
+
+            <!-- Back Layout Goes Here -->
+            <TextView
+                android:id="@+id/card_back1"
+                android:layout_width="125dp"
+                android:layout_height="98dp"
+                android:background="@drawable/btn_one_word"
+                android:fontFamily="@font/notosanskr_bold"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:textColor="#181818"
+                android:text="개"/>
+
+
+            <!-- Front Layout Goes Here -->
+            <TextView
+                android:id="@+id/card_front1"
+                android:layout_width="125dp"
+                android:layout_height="98dp"
+                android:background="@drawable/btn_one_word"
+                android:fontFamily="@font/notosanskr_bold"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:textColor="#181818"
+                android:text="Dog"/>
+
+        </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+        <com.wajahatkarim3.easyflipview.EasyFlipView
+            android:layout_width="125dp"
+            android:layout_height="98dp"
+            app:autoFlipBack="false"
+            app:flipDuration="400"
+            app:flipEnabled="true"
+            app:flipFrom="right"
+            app:flipOnTouch="true"
+            app:flipType="horizontal">
+
+            <!-- Back Layout Goes Here -->
+            <TextView
+                android:id="@+id/card_back2"
+                android:layout_width="125dp"
+                android:layout_height="98dp"
+                android:background="@drawable/btn_one_word"
+                android:fontFamily="@font/notosanskr_bold"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:textColor="#181818"
+                android:text="잠 자다"/>
+
+
+            <!-- Front Layout Goes Here -->
+            <TextView
+                android:id="@+id/card_front2"
+                android:layout_width="125dp"
+                android:layout_height="98dp"
+                android:background="@drawable/btn_one_word"
+                android:fontFamily="@font/notosanskr_bold"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:textColor="#181818"
+                android:text="Sleep"/>
+
+        </com.wajahatkarim3.easyflipview.EasyFlipView>
 
     </LinearLayout>
 
