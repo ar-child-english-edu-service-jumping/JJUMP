@@ -3,30 +3,27 @@ package com.jjump.java;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.jjump.R;
-import com.jjump.java.QuizBottomActivity;
-import com.jjump.java.adapter.RecyclerAdapter;
-import com.jjump.java.data.WordlistDates;
+import com.jjump.java.adapter.ItemAdapter;
+import com.jjump.java.adapter.Item;
+import com.jjump.java.adapter.RecyclerviewCustom;
+import com.jjump.java.adapter.SubItem;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WordlistFragment extends Fragment {
 
-    private RecyclerAdapter adapter;
+    private ItemAdapter adapter;
     private RecyclerView recyclerView;
 
     @Override
@@ -50,31 +47,31 @@ public class WordlistFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        adapter = new RecyclerAdapter();
+        adapter = new ItemAdapter(buildItemList());
         recyclerView.setAdapter(adapter);
 
-        getData();
 
         return rootView;
     }
 
 
-    private void getData() {
-        // 임의의 데이터입니다.
-
-        List<String> listDates = Arrays.asList("2022.03.17", "2022.03.16", "2022.03.15", "2022.03.14", "2022.03.13","2022.03.07","2022.02.22");
-
-
-        for (int i = 0; i < listDates.size(); i++) {
-            // 각 List의 값들을 data 객체에 set 해줍니다.
-            WordlistDates data = new WordlistDates();
-            data.setDates(listDates.get(i));
-            // 각 값이 들어간 data를 adapter에 추가합니다.
-            adapter.addItem(data);
+    // 상위아이템 큰박스 아이템을 10개 만듭니다.
+    private List<Item> buildItemList() {
+        List<Item> itemList = new ArrayList<>();
+        for (int i=0; i<10; i++) {
+            Item item = new Item("Item "+i, buildSubItemList());
+            itemList.add(item);
         }
-
-        // adapter의 값이 변경되었다는 것을 알려줍니다.
-        adapter.notifyDataSetChanged();
+        return itemList;
+    }
+    // 그안에 존재하는 하위 아이템 박스(3개씩 보이는 아이템들)
+    private List<SubItem> buildSubItemList() {
+        List<SubItem> subItemList = new ArrayList<>();
+        for (int i=0; i<5; i++) {
+            SubItem subItem = new SubItem("Sub Item "+i, "Description "+i);
+            subItemList.add(subItem);
+        }
+        return subItemList;
     }
 
 }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="8dp"
     android:gravity="center_vertical"
-    android:layout_marginBottom="8dp">
+    android:orientation="vertical"
+    android:padding="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,139 +21,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/notosnaskr_medium"
             android:includeFontPadding="false"
             android:text="2022.03.17"
-            android:textSize="13dp"
-            android:fontFamily="@font/notosnaskr_medium"
-            android:textColor="#4b4b4b"/>
-
-        <ImageButton
-            android:id="@+id/btn_quiz"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            android:layout_marginStart="255dp"
-            android:src="@drawable/btn_more"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"/>
+            android:textColor="#4b4b4b"
+            android:textSize="13dp" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_subItem"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal" />
 
-        <com.wajahatkarim3.easyflipview.EasyFlipView
-            android:layout_width="125dp"
-            android:layout_height="98dp"
-            app:autoFlipBack="false"
-            app:flipDuration="400"
-            app:flipEnabled="true"
-            app:flipFrom="right"
-            app:flipOnTouch="true"
-            app:flipType="horizontal">
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="#80989696" />
 
-            <!-- Back Layout Goes Here -->
-            <TextView
-                android:id="@+id/card_back"
-                android:layout_width="125dp"
-                android:layout_height="98dp"
-                android:background="@drawable/btn_one_word"
-                android:fontFamily="@font/notosanskr_bold"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:textColor="#181818"
-                android:text="고양이"/>
-
-
-            <!-- Front Layout Goes Here -->
-            <TextView
-                android:id="@+id/card_front"
-                android:layout_width="125dp"
-                android:layout_height="98dp"
-                android:background="@drawable/btn_one_word"
-                android:fontFamily="@font/notosanskr_bold"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:textColor="#181818"
-                android:text="Cat"/>
-
-        </com.wajahatkarim3.easyflipview.EasyFlipView>
-
-        <com.wajahatkarim3.easyflipview.EasyFlipView
-            android:layout_width="125dp"
-            android:layout_height="98dp"
-            app:autoFlipBack="false"
-            app:flipDuration="400"
-            app:flipEnabled="true"
-            app:flipFrom="right"
-            app:flipOnTouch="true"
-            app:flipType="horizontal">
-
-            <!-- Back Layout Goes Here -->
-            <TextView
-                android:id="@+id/card_back1"
-                android:layout_width="125dp"
-                android:layout_height="98dp"
-                android:background="@drawable/btn_one_word"
-                android:fontFamily="@font/notosanskr_bold"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:textColor="#181818"
-                android:text="개"/>
-
-
-            <!-- Front Layout Goes Here -->
-            <TextView
-                android:id="@+id/card_front1"
-                android:layout_width="125dp"
-                android:layout_height="98dp"
-                android:background="@drawable/btn_one_word"
-                android:fontFamily="@font/notosanskr_bold"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:textColor="#181818"
-                android:text="Dog"/>
-
-        </com.wajahatkarim3.easyflipview.EasyFlipView>
-
-        <com.wajahatkarim3.easyflipview.EasyFlipView
-            android:layout_width="125dp"
-            android:layout_height="98dp"
-            app:autoFlipBack="false"
-            app:flipDuration="400"
-            app:flipEnabled="true"
-            app:flipFrom="right"
-            app:flipOnTouch="true"
-            app:flipType="horizontal">
-
-            <!-- Back Layout Goes Here -->
-            <TextView
-                android:id="@+id/card_back2"
-                android:layout_width="125dp"
-                android:layout_height="98dp"
-                android:background="@drawable/btn_one_word"
-                android:fontFamily="@font/notosanskr_bold"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:textColor="#181818"
-                android:text="잠 자다"/>
-
-
-            <!-- Front Layout Goes Here -->
-            <TextView
-                android:id="@+id/card_front2"
-                android:layout_width="125dp"
-                android:layout_height="98dp"
-                android:background="@drawable/btn_one_word"
-                android:fontFamily="@font/notosanskr_bold"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:textColor="#181818"
-                android:text="Sleep"/>
-
-        </com.wajahatkarim3.easyflipview.EasyFlipView>
-
-    </LinearLayout>
 
 </LinearLayout>
