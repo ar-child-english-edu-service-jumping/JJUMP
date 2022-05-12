@@ -31,7 +31,7 @@
         android:layout_height="560dp"
         android:src="@drawable/gif_tree1"
         android:layout_marginTop="47dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/backgroud_wave" />
@@ -40,10 +40,20 @@
         android:layout_width="520dp"
         android:layout_height="520dp"
         android:src="@drawable/gif_tree2"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/backgroud_wave" />
+    <ImageView
+        android:id="@+id/ic_tree3"
+        android:layout_width="457dp"
+        android:layout_height="456dp"
+        android:src="@drawable/gif_tree3"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/backgroud_wave" />
+
 
     <ImageButton
         android:id="@+id/btn_camera"

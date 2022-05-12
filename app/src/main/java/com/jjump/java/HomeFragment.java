@@ -37,13 +37,22 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //나무 성장 애니메이션 gif, 성취률 별 visibility 설정할 예정
+        // 나무 성장 애니메이션 gif
         ImageView ic_tree1 = rootView.findViewById(R.id.ic_tree1);
         ImageView ic_tree2 = rootView.findViewById(R.id.ic_tree2);
+        ImageView ic_tree3 = rootView.findViewById(R.id.ic_tree3);
+        // 기준 별 visibility 설정하기
+        ic_tree1.setVisibility(View.INVISIBLE);
+        ic_tree2.setVisibility(View.INVISIBLE);
+        ic_tree3.setVisibility(View.VISIBLE);
+        // Glide 이용하여 gif 띄우기
         GlideDrawableImageViewTarget gif_tree1 = new GlideDrawableImageViewTarget(ic_tree1);
         GlideDrawableImageViewTarget gif_tree2 = new GlideDrawableImageViewTarget(ic_tree2);
+        GlideDrawableImageViewTarget gif_tree3 = new GlideDrawableImageViewTarget(ic_tree3);
         Glide.with(getActivity()).load(R.drawable.gif_tree1).into(gif_tree1);
         Glide.with(getActivity()).load(R.drawable.gif_tree2).into(gif_tree2);
+        Glide.with(getActivity()).load(R.drawable.gif_tree3).into(gif_tree3);
+
         return rootView;
     }
 }
