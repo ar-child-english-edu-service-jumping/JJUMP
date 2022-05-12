@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.jjump.R;
 
 public class CharacterDialog extends Dialog implements View.OnClickListener {
@@ -59,18 +61,34 @@ public class CharacterDialog extends Dialog implements View.OnClickListener {
                     character_id = index;
                     //그리드 위치 별 인덱스 저장됨 확인 완료
                     Log.d("id", String.valueOf(character_id));
-                    if (character_id == 3) {
+                    ImageView ic_finger = findViewById(R.id.ic_finger);
+                    GlideDrawableImageViewTarget gif_finger = new GlideDrawableImageViewTarget(ic_finger);
+                    Glide.with(getContext()).load(R.drawable.gif_finger).into(gif_finger);
+
+                    if (character_id == 0){
+                        ic_finger.setVisibility(View.VISIBLE);
+                    }else if (character_id == 1) {
+                        ic_finger.setVisibility(View.VISIBLE);
+                    }else if (character_id == 2) {
+                        ic_finger.setVisibility(View.VISIBLE);
+                    }else if (character_id == 3) {
                         Toast.makeText(getContext(), "퀴즈를 10번 풀어 잠겨있는 동물을 획득해요!", Toast.LENGTH_SHORT).show();
+                        ic_finger.setVisibility(View.INVISIBLE);
                     }else if(character_id == 4){
                         Toast.makeText(getContext(), "퀴즈를 100점 맞아서 잠겨있는 동물을 획득해요!", Toast.LENGTH_SHORT).show();
+                        ic_finger.setVisibility(View.INVISIBLE);
                     }else if(character_id == 5){
                         Toast.makeText(getContext(), "단어를 20개 추가해 잠겨있는 동물을 획득해요!", Toast.LENGTH_SHORT).show();
+                        ic_finger.setVisibility(View.INVISIBLE);
                     }else if(character_id == 6){
                         Toast.makeText(getContext(), "나무를 2단계로 성장시켜 잠겨있는 동물을 획득해요!", Toast.LENGTH_SHORT).show();
+                        ic_finger.setVisibility(View.INVISIBLE);
                     }else if(character_id == 7){
                         Toast.makeText(getContext(), "나무를 3단계로 성장시켜 잠겨있는 동물을 획득해요!", Toast.LENGTH_SHORT).show();
+                        ic_finger.setVisibility(View.INVISIBLE);
                     }else if(character_id == 8){
                         Toast.makeText(getContext(), "잠겨있는 동물을 획득하려면 단어를 50개 추가해요!", Toast.LENGTH_SHORT).show();
+                        ic_finger.setVisibility(View.INVISIBLE);
                     }
                 }
             });
