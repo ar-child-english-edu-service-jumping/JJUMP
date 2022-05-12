@@ -12,6 +12,8 @@ import com.jjump.R;
 
 import java.util.ArrayList;
 
+
+//단어 인식 화면에서 추출된 단어를 리사이클러뷰로 보여주기 위함
 public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder>{
     private ArrayList<String> mData = null ;
 

@@ -35,6 +35,7 @@ import com.google.mlkit.vision.text.Text.TextBlock;
 import com.jjump.java.HomeActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -59,6 +60,7 @@ public class TextGraphic extends Graphic {
   private final Boolean showLanguageTag;
 
   public final int maxWordNum = 15;                 // Set maximum word list number shown in screen
+
 
   TextGraphic(
           GraphicOverlay overlay, Text text, boolean shouldGroupTextInBlocks, boolean showLanguageTag) {
@@ -133,12 +135,23 @@ public class TextGraphic extends Graphic {
 
               //overlay.overlayarrayList.add(element.getText());
 
+              String temp=element.getText();
+              temp.replace(",","");
+              temp.replace(" ","");
+              temp.replace(".","");
+              temp.replace("'","");
+              temp.replace("\"","");
+              temp.replace("?","");
+              temp.replace("!","");
+
+              temp=temp.substring(0,1).toUpperCase()+temp.substring(1,temp.length());
+
               ///////////// insert text element in text container/////////////
-              if (element.getText().length() >= 3) {
-                if (!HomeActivity.textContainer.contains(element.getText())) {     //only for the new word
+              if (HomeActivity.tempDB.contains(temp)) {
+                if (!HomeActivity.textContainer.contains(temp)) {     //only for the new word
                   if (HomeActivity.textContainer.size() >= maxWordNum)               //if the place for new word not exists
                     HomeActivity.textContainer.remove(maxWordNum - 1);
-                  HomeActivity.textContainer.add(0, element.getText());
+                  HomeActivity.textContainer.add(0, temp);
                 }
               }
 

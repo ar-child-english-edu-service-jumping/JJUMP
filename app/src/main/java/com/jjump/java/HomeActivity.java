@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity {
 
     BottomNavigationView tab;
 
+    public static ArrayList<String> tempDB;
     public static ArrayList<String> textContainer;  // Array list for holding recognized words
     public static long startTime=0;
     public static long endTime=0;
@@ -47,6 +48,9 @@ public class HomeActivity extends AppCompatActivity {
 
         // array list for holding recognized text
         textContainer = new ArrayList<>();
+        tempDB=new ArrayList<>();
+        tempDB.add("Yellow"); tempDB.add("Duck"); tempDB.add("Blue"); tempDB.add("Horse"); tempDB.add("Green"); tempDB.add("Frog"); tempDB.add("See");
+
 
         //for hide state bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
