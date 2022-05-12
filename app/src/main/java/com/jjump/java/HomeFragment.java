@@ -43,8 +43,8 @@ public class HomeFragment extends Fragment {
         ImageView ic_tree3 = rootView.findViewById(R.id.ic_tree3);
         // 기준 별 visibility 설정하기
         ic_tree1.setVisibility(View.INVISIBLE);
-        ic_tree2.setVisibility(View.INVISIBLE);
-        ic_tree3.setVisibility(View.VISIBLE);
+        ic_tree2.setVisibility(View.VISIBLE);
+        ic_tree3.setVisibility(View.INVISIBLE);
         // Glide 이용하여 gif 띄우기
         GlideDrawableImageViewTarget gif_tree1 = new GlideDrawableImageViewTarget(ic_tree1);
         GlideDrawableImageViewTarget gif_tree2 = new GlideDrawableImageViewTarget(ic_tree2);

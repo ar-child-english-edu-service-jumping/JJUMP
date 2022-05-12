@@ -3,6 +3,7 @@ package com.jjump.java;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
@@ -12,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dinuscxj.progressbar.CircleProgressBar;
 import com.google.ar.sceneform.rendering.ModelRenderable;
@@ -27,10 +30,12 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
     TextView total_word_number;
     TextView study_rate_number;
     TextView tv_child_name;
+    ImageView iv_profile_picture;
     String child_name;
+    int pass_character_id = 1;
     private static final String DEFAULT_PATTERN = "%d%%";
     private int studyRate = 0;
-    private int totalWordCount = 0;
+    private int totalWordCount = 12;
 
 
     @Override
@@ -43,6 +48,8 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
         total_word_number = rootView.findViewById(R.id.total_word_number);
         study_rate_number = rootView.findViewById(R.id.study_rate_number);
         tv_child_name = rootView.findViewById(R.id.tv_child_name);
+        iv_profile_picture = rootView.findViewById(R.id.iv_profile_picture);
+
 
         btn_contact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +93,7 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
                     public void onPositiveClicked(String childName) {
                         child_name = childName;
                         tv_child_name.setText(child_name);
+                        tv_child_name.setTextColor(Color.parseColor("#181818"));
                     }
                     @Override
                     public void onNegativeClicked() {
@@ -94,6 +102,62 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
                 dialog.show();
             }
         });
+
+        //open dialog to choose character
+        iv_profile_picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharacterDialog dialog = new CharacterDialog(getActivity());
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setDialogListener(new CharacterDialog.CustomDialogListener() {
+                    @Override
+                    public void onPositiveClicked(int character_id) {
+                        pass_character_id = character_id;
+                        switch (pass_character_id){
+                            case 0:
+                                iv_profile_picture.setImageResource(R.drawable.ch_lion);
+                                iv_profile_picture.setBackground(null);
+                                break;
+                            case 1 :
+                                iv_profile_picture.setImageResource(R.drawable.ch_elephant);
+                                iv_profile_picture.setBackground(null);
+                                break;
+                            case 2 :
+                                iv_profile_picture.setImageResource(R.drawable.ch_cat);
+                                iv_profile_picture.setBackground(null);
+                                break;
+                            case 3 :
+                                Toast.makeText(getContext(), "퀴즈를 10번 풀어 잠겨있는 동물을 획득해요!", Toast.LENGTH_SHORT).show();
+                                break;
+                            case 4 :
+                                Toast.makeText(getContext(), "퀴즈를 100점 맞아서 잠겨있는 동물을 획득해요!", Toast.LENGTH_SHORT).show();
+                                break;
+                            case 5 :
+                                Toast.makeText(getContext(), "단어를 20개 추가해 잠겨있는 동물을 획득해요!", Toast.LENGTH_SHORT).show();
+                                break;
+                            case 6 :
+                                Toast.makeText(getContext(), "나무를 2단계로 성장시켜 잠겨있는 동물을 획득해요!", Toast.LENGTH_SHORT).show();
+                                break;
+                            case 7 :
+                                Toast.makeText(getContext(), "나무를 3단계로 성장시켜 잠겨있는 동물을 획득해요!", Toast.LENGTH_SHORT).show();
+                                break;
+                            case 8 :
+                                Toast.makeText(getContext(), "잠겨있는 동물을 획득하려면 단어를 50개 추가해요!", Toast.LENGTH_SHORT).show();
+                                break;
+
+
+                        }
+                    }
+                    @Override
+                    public void onNegativeClicked() {
+                    }
+                });
+                dialog.show();
+
+            }
+        });
+
 
         return rootView;
     }

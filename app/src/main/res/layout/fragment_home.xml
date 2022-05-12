@@ -81,19 +81,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/notosnaskr_medium"
+            android:fontFamily="@font/dodamdodam"
+            android:layout_marginTop="10dp"
             android:text="재미있게 읽어볼까요?"
             android:textColor="#4B4B4B"
-            android:textSize="15dp" />
+            android:textSize="23dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/notosnaskr_medium"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/dodamdodam"
             android:text="책의 페이지를 카메라에 비춰주세요."
             android:textColor="#666666"
-            android:textSize="13dp" />
+            android:textSize="19dp" />
 
     </LinearLayout>
 

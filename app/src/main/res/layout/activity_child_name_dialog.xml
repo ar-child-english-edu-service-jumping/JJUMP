@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="270dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/round_dialog"
     tools:context=".java.ChildNameDialog">
@@ -18,14 +19,14 @@
         android:background="@null"
         android:hint="아이의 이름을 입력해 주세요! "
         android:textColor="#A4A4A9"
-        android:textSize="14dp"
+        android:textSize="17dp"
         android:fontFamily="@font/notosnaskr_medium"/>
 
     <LinearLayout
         android:id="@+id/button_groups"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="140dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_child_name"
@@ -33,21 +34,21 @@
 
         <Button
             android:id="@+id/btn_cancel"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="#00FFFFFF"
-            android:textSize="11dp"
+            android:textSize="16dp"
             android:text="취소하기"
             android:fontFamily="@font/notosnaskr_medium"/>
 
         <Button
             android:id="@+id/btn_confirm"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="#00ffffff"
             android:text="저장하기"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="11dp"
+            android:textSize="16dp"
             android:fontFamily="@font/notosnaskr_medium" />
 
     </LinearLayout>
