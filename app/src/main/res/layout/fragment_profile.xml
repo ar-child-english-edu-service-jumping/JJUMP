@@ -39,7 +39,7 @@
             android:layout_height="70dp"
             android:elevation="4dp"
             android:layout_marginStart="20dp"
-            android:src="@drawable/ch_default"
+            android:src="@drawable/ch_default_"
             android:background="@drawable/round_button"/>
         <TextView
             android:id="@+id/tv_child_name"
@@ -49,7 +49,7 @@
             android:layout_marginStart="20dp"
             android:text="아이의 이름을 알려주세요!"
             android:textSize="20dp"
-            android:textColor="#A4A4A9"
+            android:textColor="#636363"
             android:fontFamily="@font/dodamdodam"/>
     </LinearLayout>
     <ImageView
@@ -96,17 +96,17 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="16dp"
                     android:text="총 36개의 단어를 배웠어요!"
-                    android:textSize="20dp"
+                    android:textSize="25dp"
                     android:textColor="#181818"
                     android:fontFamily="@font/dodamdodam"/>
                 <TextView
                     android:id="@+id/study_rate_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="23dp"
                     android:layout_marginTop="5dp"
                     android:text="학습률이 높아요!"
-                    android:textSize="18dp"
+                    android:textSize="20dp"
                     android:textColor="#181818"
                     android:fontFamily="@font/dodamdodam"/>
                 <com.dinuscxj.progressbar.CircleProgressBar

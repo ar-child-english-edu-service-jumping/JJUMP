@@ -15,7 +15,6 @@ import android.widget.ImageButton;
 import com.jjump.R;
 import com.jjump.java.adapter.ItemAdapter;
 import com.jjump.java.adapter.Item;
-import com.jjump.java.adapter.RecyclerviewCustom;
 import com.jjump.java.adapter.SubItem;
 
 import java.util.ArrayList;
