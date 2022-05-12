@@ -15,7 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="귀여운 동물 친구들을 모아보세요!"
-        android:textSize="19dp"
+        android:textSize="22dp"
         android:textColor="#181818"
         android:fontFamily="@font/dodamdodam"/>
 
@@ -97,7 +97,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/btn_confirm_character"
         android:text="골랐어요!"
-        android:textSize="16dp"
+        android:textSize="18dp"
         android:textColor="#181818"
         android:fontFamily="@font/dodamdodam"
         app:layout_constraintTop_toBottomOf="@+id/character_grid"/>
