@@ -25,11 +25,11 @@
             android:layout_height="110dp"
             android:background="@drawable/btn_one_word"
             android:backgroundTint="#FFE889"
-            android:fontFamily="@font/notosanskr_bold"
+            android:fontFamily="@font/dodamdodam"
             android:gravity="center"
             android:text="고양이"
             android:textColor="#181818"
-            android:textSize="15dp" />
+            android:textSize="25dp" />
 
 
         <!-- Front Layout Goes Here -->
@@ -38,11 +38,11 @@
             android:layout_width="145dp"
             android:layout_height="110dp"
             android:background="@drawable/btn_one_word"
-            android:fontFamily="@font/notosanskr_bold"
+            android:fontFamily="@font/dodamdodam"
             android:gravity="center"
             android:text="Cat"
             android:textColor="#181818"
-            android:textSize="15dp" />
+            android:textSize="25dp" />
 
     </com.wajahatkarim3.easyflipview.EasyFlipView>
 
