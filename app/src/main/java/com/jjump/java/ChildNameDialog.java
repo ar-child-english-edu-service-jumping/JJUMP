@@ -2,6 +2,7 @@ package com.jjump.java;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +10,14 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 
 import com.jjump.R;
+import com.jjump.java.data.ReqNicknameData;
+import com.jjump.java.data.ResNicknameData;
+import com.jjump.java.network.ApiInterface;
+import com.jjump.java.network.HttpClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChildNameDialog extends Dialog implements View.OnClickListener{
 
@@ -16,6 +25,29 @@ public class ChildNameDialog extends Dialog implements View.OnClickListener{
     private Button btn_cancel;
     private EditText et_child_name;
     private Context context;
+    private ApiInterface api;
+    String childName;
+
+    // POST 통신요청
+    public void requestPost() {
+        ReqNicknameData reqNicknameData = new ReqNicknameData( "abc@abc.com", childName);
+        Call<ResNicknameData> call = api.requestNickname( reqNicknameData );
+
+        // 비동기로 백그라운드 쓰레드로 동작
+        call.enqueue( new Callback<ResNicknameData>() {
+            // 통신성공 후 텍스트뷰에 결과값 출력
+            @Override
+            public void onResponse(Call<ResNicknameData> call, Response<ResNicknameData> response) {
+                Log.i("my tag", response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<ResNicknameData> call, Throwable t) {
+                Log.i("my tag", "fail!!!!!!!!!!!!!!!!");
+                Log.i("erre", t.toString());
+            }
+        } );
+    }
 
     private CustomDialogListener customDialogListener;
 
@@ -46,12 +78,16 @@ public class ChildNameDialog extends Dialog implements View.OnClickListener{
         btn_cancel.setOnClickListener(this);
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_confirm:
-                String childName = et_child_name.getText().toString();
+                childName = et_child_name.getText().toString();
                 customDialogListener.onPositiveClicked(childName);
+                // api call
+                api = HttpClient.getRetrofit().create( ApiInterface.class );
+                requestPost();
                 dismiss();
                 break;
             case R.id.btn_cancel:

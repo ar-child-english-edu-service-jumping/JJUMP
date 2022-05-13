@@ -26,8 +26,10 @@
     </queries>
 
     <application
+        android:allowBackup="true"
         android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".java.ArQuizActivity"
@@ -40,18 +42,19 @@
             android:exported="true" />
         <activity
             android:name=".java.HomeActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".java.CameraXLivePreviewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".java.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".java.CameraXLivePreviewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".java.LoginActivity"
+            android:exported="true">
         </activity>
 
         <meta-data

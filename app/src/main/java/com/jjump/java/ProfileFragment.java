@@ -3,7 +3,6 @@ package com.jjump.java;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
@@ -18,8 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dinuscxj.progressbar.CircleProgressBar;
-import com.google.ar.sceneform.rendering.ModelRenderable;
-import com.google.ar.sceneform.ux.ArFragment;
 import com.jjump.R;
 
 
@@ -49,7 +46,6 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
         study_rate_number = rootView.findViewById(R.id.study_rate_number);
         tv_child_name = rootView.findViewById(R.id.tv_child_name);
         iv_profile_picture = rootView.findViewById(R.id.iv_profile_picture);
-
 
         btn_contact.setOnClickListener(new View.OnClickListener() {
             @Override

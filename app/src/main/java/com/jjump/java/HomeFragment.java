@@ -42,7 +42,6 @@ public class HomeFragment extends Fragment {
         ImageView ic_tree1 = rootView.findViewById(R.id.ic_tree1);
         ImageView ic_tree2 = rootView.findViewById(R.id.ic_tree2);
         ImageView ic_tree3 = rootView.findViewById(R.id.ic_tree3);
-        //ImageView ic_sparkle = rootView.findViewById(R.id.ic_sparkle);
         // 기준 별 visibility 설정하기
         ic_tree1.setVisibility(View.INVISIBLE);
         ic_tree2.setVisibility(View.VISIBLE);
@@ -51,11 +50,9 @@ public class HomeFragment extends Fragment {
         GlideDrawableImageViewTarget gif_tree1 = new GlideDrawableImageViewTarget(ic_tree1);
         GlideDrawableImageViewTarget gif_tree2 = new GlideDrawableImageViewTarget(ic_tree2);
         GlideDrawableImageViewTarget gif_tree3 = new GlideDrawableImageViewTarget(ic_tree3);
-        //GlideDrawableImageViewTarget gif_sparkle = new GlideDrawableImageViewTarget(ic_sparkle);
-        Glide.with(getActivity()).load(R.drawable.gif_tree1).into(gif_tree1);
+        //Glide.with(getActivity()).load(R.drawable.gif_tree1).into(gif_tree1);
         Glide.with(getActivity()).load(R.drawable.gif_tree2).into(gif_tree2);
-        Glide.with(getActivity()).load(R.drawable.gif_tree3).into(gif_tree3);
-        //Glide.with(getActivity()).load(R.drawable.gif_sparkle).into(gif_sparkle);
+        //Glide.with(getActivity()).load(R.drawable.gif_tree3).into(gif_tree3);
 
         return rootView;
     }
