@@ -1,4 +1,6 @@
 package com.jjump.java;
+import static android.app.PendingIntent.getActivity;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -9,6 +11,8 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.jjump.R;
 import com.jjump.java.data.ReqNicknameData;
 import com.jjump.java.data.ResNicknameData;
@@ -27,10 +31,11 @@ public class ChildNameDialog extends Dialog implements View.OnClickListener{
     private Context context;
     private ApiInterface api;
     String childName;
+    String email;
 
     // POST 통신요청
     public void requestPost() {
-        ReqNicknameData reqNicknameData = new ReqNicknameData( "abc@abc.com", childName);
+        ReqNicknameData reqNicknameData = new ReqNicknameData( email, childName);
         Call<ResNicknameData> call = api.requestNickname( reqNicknameData );
 
         // 비동기로 백그라운드 쓰레드로 동작
@@ -68,6 +73,11 @@ public class ChildNameDialog extends Dialog implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_name_dialog);
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
+        if (acct != null) {
+            email = acct.getEmail();
+        }
 
         btn_confirm = findViewById(R.id.btn_confirm);
         btn_cancel = findViewById(R.id.btn_cancel);
