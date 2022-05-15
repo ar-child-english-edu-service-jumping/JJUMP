@@ -9,7 +9,7 @@
         android:id="@+id/backgroud_wave"
         android:scaleType="fitXY"
         android:layout_width="match_parent"
-        android:layout_height="405dp"
+        android:layout_height="505dp"
         android:src="@drawable/bg_main_wave"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -17,30 +17,45 @@
 
     <ImageView
         android:id="@+id/ic_logo"
-        android:layout_width="98dp"
-        android:layout_height="34dp"
+        android:layout_width="94dp"
+        android:layout_height="28dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/ic_logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/ic_sparkle"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:src="@drawable/gif_sparkle"
-        android:layout_marginTop="70dp"
-        android:visibility="invisible"
+    <TextView
+        android:id="@+id/current_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="18dp"
+        android:text="지금까지 8개의 퀴즈를 마스터 했어요!"
+        android:textSize="16dp"
+        android:textColor="#077C12"
+        android:fontFamily="@font/notosanskr_bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/backgroud_wave" />
+        app:layout_constraintTop_toBottomOf="@id/ic_logo"/>
+    <TextView
+        android:id="@+id/next_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="48dp"
+        android:text="12개의 퀴즈를 더 풀면 식물이 자라나요."
+        android:textSize="14dp"
+        android:textColor="#077C12"
+        android:fontFamily="@font/notosnaskr_medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ic_logo"/>
     <ImageView
         android:id="@+id/ic_tree1"
         android:layout_width="560dp"
         android:layout_height="560dp"
         android:src="@drawable/gif_tree1"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="142dp"
         android:visibility="invisible"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/backgroud_wave" />
@@ -50,15 +65,17 @@
         android:layout_height="520dp"
         android:src="@drawable/gif_tree2"
         android:visibility="invisible"
+        android:layout_marginTop="94dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/backgroud_wave" />
     <ImageView
         android:id="@+id/ic_tree3"
-        android:layout_width="457dp"
-        android:layout_height="456dp"
+        android:layout_width="440dp"
+        android:layout_height="440dp"
         android:src="@drawable/gif_tree3"
-        android:visibility="invisible"
+        android:visibility="visible"
+        android:layout_marginTop="108dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/backgroud_wave" />
@@ -66,9 +83,9 @@
 
     <ImageButton
         android:id="@+id/btn_camera"
-        android:layout_width="105dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="7dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         android:src="@drawable/btn_camera"
@@ -80,8 +97,9 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_camera">
@@ -89,22 +107,31 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/dodamdodam"
-            android:layout_marginTop="10dp"
-            android:text="재미있게 읽어볼까요?"
-            android:textColor="#EF8260"
-            android:textSize="33dp" />
-
+            android:fontFamily="@font/cookierun_regular"
+            android:text="카메라"
+            android:textColor="#181818"
+            android:textSize="20dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/dodamdodam"
-            android:text="책의 페이지를 카메라에 비춰주세요."
+            android:fontFamily="@font/cookierun_regular"
+            android:text="를 통해 "
             android:textColor="#181818"
-            android:textSize="23dp" />
+            android:textSize="17dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cookierun_regular"
+            android:text="재미있게"
+            android:textColor="#181818"
+            android:textSize="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cookierun_regular"
+            android:text=" 읽어 볼까요?"
+            android:textColor="#181818"
+            android:textSize="17dp" />
 
     </LinearLayout>
 

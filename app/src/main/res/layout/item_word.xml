@@ -10,7 +10,7 @@
 
     <com.wajahatkarim3.easyflipview.EasyFlipView
         android:layout_width="145dp"
-        android:layout_height="110dp"
+        android:layout_height="105dp"
         app:autoFlipBack="false"
         app:flipDuration="400"
         app:flipEnabled="true"
@@ -22,27 +22,27 @@
         <TextView
             android:id="@+id/card_back"
             android:layout_width="145dp"
-            android:layout_height="110dp"
+            android:layout_height="105dp"
             android:background="@drawable/btn_one_word"
             android:backgroundTint="#FFE889"
-            android:fontFamily="@font/dodamdodam"
+            android:fontFamily="@font/cookierun_regular"
             android:gravity="center"
             android:text="고양이"
             android:textColor="#181818"
-            android:textSize="25dp" />
+            android:textSize="18dp" />
 
 
         <!-- Front Layout Goes Here -->
         <TextView
             android:id="@+id/card_front"
             android:layout_width="145dp"
-            android:layout_height="110dp"
+            android:layout_height="105dp"
             android:background="@drawable/btn_one_word"
-            android:fontFamily="@font/dodamdodam"
+            android:fontFamily="@font/cookierun_regular"
             android:gravity="center"
             android:text="Cat"
             android:textColor="#181818"
-            android:textSize="25dp" />
+            android:textSize="18dp" />
 
     </com.wajahatkarim3.easyflipview.EasyFlipView>
 

@@ -128,6 +128,8 @@ public class LoginActivity extends AppCompatActivity {
             // 닉네임 post 하는 childname dialog에 이메일 값 전달
             Intent intent2=new Intent(LoginActivity.this,ChildNameDialog.class);
             intent2.putExtra("email",account.getEmail());
+            Intent intent3=new Intent(LoginActivity.this,ProfileFragment.class);
+            intent3.putExtra("name",account.getDisplayName());
 
             startActivity(intent);
         } catch (ApiException e) {

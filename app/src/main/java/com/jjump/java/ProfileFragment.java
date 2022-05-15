@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dinuscxj.progressbar.CircleProgressBar;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.jjump.R;
 
 
@@ -29,6 +31,7 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
     TextView tv_child_name;
     ImageView iv_profile_picture;
     String child_name;
+    String name;
     int pass_character_id = 1;
     private static final String DEFAULT_PATTERN = "%d%%";
     private int studyRate = 0;
@@ -46,6 +49,12 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
         study_rate_number = rootView.findViewById(R.id.study_rate_number);
         tv_child_name = rootView.findViewById(R.id.tv_child_name);
         iv_profile_picture = rootView.findViewById(R.id.iv_profile_picture);
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
+        if (acct != null) {
+            name = acct.getDisplayName();
+        }
+        tv_child_name.setText(name + "님, \n아이의 이름을 알려주세요!");
 
         btn_contact.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -20,12 +20,12 @@
             android:id="@+id/tv_dates"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="12dp"
             android:fontFamily="@font/notosnaskr_medium"
             android:includeFontPadding="false"
             android:text="2022.03.17"
             android:textColor="#4b4b4b"
-            android:textSize="13dp" />
+            android:textSize="15dp" />
 
     </LinearLayout>
 
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="4dp"
-        android:background="#80989696" />
+        android:background="#59C3C3C3" />
 
 
 </LinearLayout>

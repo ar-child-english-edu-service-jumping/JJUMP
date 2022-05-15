@@ -50,9 +50,9 @@ public class HomeFragment extends Fragment {
         GlideDrawableImageViewTarget gif_tree1 = new GlideDrawableImageViewTarget(ic_tree1);
         GlideDrawableImageViewTarget gif_tree2 = new GlideDrawableImageViewTarget(ic_tree2);
         GlideDrawableImageViewTarget gif_tree3 = new GlideDrawableImageViewTarget(ic_tree3);
-        //Glide.with(getActivity()).load(R.drawable.gif_tree1).into(gif_tree1);
+        Glide.with(getActivity()).load(R.drawable.gif_tree1).into(gif_tree1);
         Glide.with(getActivity()).load(R.drawable.gif_tree2).into(gif_tree2);
-        //Glide.with(getActivity()).load(R.drawable.gif_tree3).into(gif_tree3);
+        Glide.with(getActivity()).load(R.drawable.gif_tree3).into(gif_tree3);
 
         return rootView;
     }

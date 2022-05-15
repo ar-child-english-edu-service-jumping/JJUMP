@@ -47,7 +47,7 @@
         <FrameLayout
             android:id="@+id/wordlistframe"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="140dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">
@@ -55,7 +55,8 @@
             <ImageView
                 android:id="@+id/backgroud_bottom_wave"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:visibility="visible"
+                android:layout_height="140dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/bg_bottom_wave" />
 
