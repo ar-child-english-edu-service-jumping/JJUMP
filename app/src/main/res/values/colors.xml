@@ -11,4 +11,8 @@
     <color name="white">#FFFFFF</color>
     <color name="blue">#4286f4</color>
     <color name="red">#f44242</color>
+
+    <color name="navigation_read">#F57A06</color>
+    <color name="navigation_word">#F3F31C</color>
+    <color name="navigation_profile">#4DEF18</color>
 </resources>

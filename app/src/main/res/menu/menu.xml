@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cnb_unselectedColor="#666666">
+
     <item
         android:id="@+id/book_tab"
         android:enabled="true"
         android:icon="@drawable/sample1"
-        android:title="독서"/>
+        android:title="독서"
+        app:cnb_iconColor="@color/navigation_read"/>
 
     <item
         android:id="@+id/wordlist_tab"
         android:enabled="true"
         android:icon="@drawable/sample2"
-        android:title="단어장"/>
+        android:title="단어장"
+        app:cnb_iconColor="@color/navigation_word"/>
 
     <item
         android:id="@+id/profile_tab"
         android:enabled="true"
         android:icon="@drawable/sample3"
-        android:title="프로필"/>
+        android:title="프로필"
+        app:cnb_iconColor="@color/navigation_profile"/>
 
 </menu>

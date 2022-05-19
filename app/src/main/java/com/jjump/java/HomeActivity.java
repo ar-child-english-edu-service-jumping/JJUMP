@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.jjump.R;
 import com.jjump.java.adapter.TextAdapter;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
-    BottomNavigationView tab;
+    ChipNavigationBar tab;
 
     public static ArrayList<String> tempDB;
     public static ArrayList<String> textContainer;  // Array list for holding recognized words
@@ -58,12 +59,13 @@ public class HomeActivity extends AppCompatActivity {
         //bottom navigation view
         tab=findViewById(R.id.tab);
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, new HomeFragment()).commit(); // initiallize
+        tab.setItemSelected(R.id.book_tab,false);       //set default item
 
         //바텀 네비게이션뷰 안의 아이템 설정
-        tab.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        tab.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
+            public void onItemSelected(int i) {
+                switch (i) {
                     //item을 클릭시 id값을 가져와 FrameLayout에 fragment.xml띄우기
                     case R.id.book_tab:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contatiner, new HomeFragment()).commit();
@@ -75,9 +77,7 @@ public class HomeActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contatiner, new ProfileFragment()).commit();
                         break;
                 }
-                return true;
             }
         });
-
     }
 }
