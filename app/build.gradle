@@ -137,3 +137,14 @@ sceneform.asset('sampledata/models/chuteira.fbx',
         'default',
         'sampledata/models/chuteira.sfa',
         'src/main/res/raw/chuteira')
+
+sceneform.asset('sampledata/horse.obj',
+        'default',
+        'sampledata/horse.sfa',
+        'src/main/res/raw/horse')
+
+sceneform.asset('sampledata/frog.fbx',
+        'default',
+        'sampledata/frog.sfa',
+        'src/main/res/raw/frog')
+

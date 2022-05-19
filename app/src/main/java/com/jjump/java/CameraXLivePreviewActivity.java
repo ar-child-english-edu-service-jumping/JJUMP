@@ -123,6 +123,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
       @Override
       public void onItemClick(View v, int position) {
         Intent intent=new Intent(getApplicationContext(),ArActivity.class);
+        intent.putExtra("model",HomeActivity.textContainer.get(position));
         startActivity(intent);
       }
     });

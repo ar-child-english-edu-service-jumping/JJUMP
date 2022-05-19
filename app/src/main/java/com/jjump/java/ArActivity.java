@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,8 @@ public class ArActivity extends AppCompatActivity {
     private ArFragment arFragment;
     private ModelRenderable andyRenderable;
 
+    private int resource;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +41,25 @@ public class ArActivity extends AppCompatActivity {
             return;
         }
 
+        Intent intent=getIntent();
+        String model=intent.getExtras().getString("model");
+
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
 
         // When you build a Renderable, Sceneform loads its resources in the background while returning
         // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
+
+        if(model.equals("Frog")){
+            resource=R.raw.frog;
+        }
+        else if (model.equals("Horse"))
+            resource=R.raw.horse;
+        else
+            resource=R.raw.horse;
+
+
         ModelRenderable.builder()
-                .setSource(getApplicationContext(), R.raw.chuteira)
+                .setSource(getApplicationContext(), resource)
 
                 .build()
                 .thenAccept(renderable -> andyRenderable = renderable)
