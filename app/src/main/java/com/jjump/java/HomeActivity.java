@@ -3,6 +3,8 @@ package com.jjump.java;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Build;
@@ -27,6 +29,9 @@ public class HomeActivity extends AppCompatActivity {
     public static ArrayList<String> textContainer;  // Array list for holding recognized words
     public static long startTime=0;
     public static long endTime=0;
+
+    private FragmentManager fragmentManager;
+    private Fragment f1, f2, f3;
 
 
     @Override
@@ -58,8 +63,12 @@ public class HomeActivity extends AppCompatActivity {
 
         //bottom navigation view
         tab=findViewById(R.id.tab);
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, new HomeFragment()).commit(); // initiallize
+        //getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, new HomeFragment()).commit(); // initiallize
         tab.setItemSelected(R.id.book_tab,false);       //set default item
+
+        fragmentManager = getSupportFragmentManager();
+        f1 = new HomeFragment();
+        fragmentManager.beginTransaction().replace(R.id.fragment_contatiner,f1).commit();
 
         //바텀 네비게이션뷰 안의 아이템 설정
         tab.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
@@ -68,13 +77,33 @@ public class HomeActivity extends AppCompatActivity {
                 switch (i) {
                     //item을 클릭시 id값을 가져와 FrameLayout에 fragment.xml띄우기
                     case R.id.book_tab:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contatiner, new HomeFragment()).commit();
+                        if (f1 == null){
+                            f1 = new HomeFragment();
+                            getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, f1).commit();
+                        }
+                        if (f1 != null) fragmentManager.beginTransaction().show(f1).commit();
+                        if (f2 != null) fragmentManager.beginTransaction().hide(f2).commit();
+                        if (f3 != null) fragmentManager.beginTransaction().hide(f3).commit();
                         break;
+
                     case R.id.wordlist_tab:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contatiner, new WordlistFragment()).commit();
+                        if (f2 == null){
+                            f2 = new WordlistFragment();
+                            getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, f2).commit();
+                        }
+                        if (f1 != null) fragmentManager.beginTransaction().hide(f1).commit();
+                        if (f2 != null) fragmentManager.beginTransaction().show(f2).commit();
+                        if (f3 != null) fragmentManager.beginTransaction().hide(f3).commit();
                         break;
+
                     case R.id.profile_tab:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contatiner, new ProfileFragment()).commit();
+                        if (f3 == null){
+                            f3 = new ProfileFragment();
+                            getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, f3).commit();
+                        }
+                        if (f1 != null) fragmentManager.beginTransaction().hide(f1).commit();
+                        if (f2 != null) fragmentManager.beginTransaction().hide(f2).commit();
+                        if (f3 != null) fragmentManager.beginTransaction().show(f3).commit();
                         break;
                 }
             }

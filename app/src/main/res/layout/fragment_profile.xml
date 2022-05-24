@@ -51,7 +51,7 @@
     <LinearLayout
         android:id="@+id/user_info"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="80dp"
         android:orientation="horizontal"
         android:layout_marginTop="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -68,7 +68,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="12dp">
 
             <TextView
                 android:id="@+id/tv_child_name"
@@ -86,11 +86,11 @@
                 android:id="@+id/tv_greeting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="9dp"
                 app:layout_constraintLeft_toRightOf="@id/tv_child_name"
                 app:layout_constraintTop_toTopOf="parent"
                 android:visibility="invisible"
-                android:text=" 반가워요 🤩"
+                android:text="  반가워요 🤩"
                 android:textSize="15dp"
                 android:textColor="#636363"
                 android:fontFamily="@font/notosnaskr_medium"/>
