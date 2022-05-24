@@ -17,18 +17,31 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dinuscxj.progressbar.CircleProgressBar;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.jjump.R;
+
+import java.util.ArrayList;
 
 
 public class ProfileFragment extends Fragment implements CircleProgressBar.ProgressFormatter{
 
     ImageButton btn_contact;
     CircleProgressBar circleProgressBar1;
+    BarChart bar_chart;
     TextView total_word_number;
-    TextView study_rate_number;
     TextView tv_child_name;
+    TextView tv_greeting;
     ImageView iv_profile_picture;
     String child_name;
     String name;
@@ -36,6 +49,10 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
     private static final String DEFAULT_PATTERN = "%d%%";
     private int studyRate = 0;
     private int totalWordCount = 12;
+
+    // bar chart data
+    ArrayList<Integer> wordcountList = new ArrayList<>(); // ArrayList 선언
+    ArrayList<String> labelList = new ArrayList<>(); // ArrayList 선언
 
 
     @Override
@@ -45,17 +62,34 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
 
         btn_contact = rootView.findViewById(R.id.btn_contact);
         circleProgressBar1 = rootView.findViewById(R.id.circle_bar1);
+        bar_chart = rootView.findViewById(R.id.bar_chart);
         total_word_number = rootView.findViewById(R.id.total_word_number);
-        study_rate_number = rootView.findViewById(R.id.study_rate_number);
         tv_child_name = rootView.findViewById(R.id.tv_child_name);
+        tv_greeting = rootView.findViewById(R.id.tv_greeting);
         iv_profile_picture = rootView.findViewById(R.id.iv_profile_picture);
+
+        //bar chart setting
+        graphInitSetting();       //그래프 기본 세팅
+
+        BarChartGraph(labelList, wordcountList);
+        bar_chart.getAxisLeft().setDrawAxisLine(false);
+        bar_chart.getAxisLeft().setDrawLabels(false);
+        bar_chart.getAxisLeft().setDrawGridLines(false);
+
+        bar_chart.getAxisRight().setDrawAxisLine(false);
+        bar_chart.getAxisRight().setDrawLabels(false);
+        bar_chart.getAxisRight().setDrawGridLines(false);
+
+        bar_chart.getXAxis().setDrawAxisLine(false);
+        bar_chart.getXAxis().setDrawGridLines(false);
+        bar_chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
         if (acct != null) {
             name = acct.getDisplayName();
         }
         tv_child_name.setText(name + "님, \n아이의 이름을 알려주세요!");
-
+        //문의하기
         btn_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,22 +104,12 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
         });
 
         //get 총 저장한 단어 개수, save to totalWordCount and settext
-        total_word_number.setText("총 " + totalWordCount + "개의 단어를 배웠어요!");
+        //total_word_number.setText("총 " + totalWordCount + "개의 단어를 배웠어요!");
 
         // get 학습률, save to studyRate and update progress bar
-        studyRate = 15;
+        studyRate = 25;
         circleProgressBar1.setProgress(studyRate);
 
-        // studyRate에 대해 지정된 메세지 출력
-        if (studyRate <= 20){
-            study_rate_number.setText("함께 꾸준히 독서해 보아요 🤓");
-        } else if(20 < studyRate && studyRate <= 50 ) {
-            study_rate_number.setText("잘하고 있어요 🥳");
-        } else if(50 < studyRate && studyRate < 80 ) {
-            study_rate_number.setText("학습률이 높아요 🤩");
-        } else if(80 < studyRate && studyRate < 100 ) {
-            study_rate_number.setText("학습률이 매우 높아요 😍");
-        }
         // open dialog to enter child name
         tv_child_name.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +121,9 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
                     @Override
                     public void onPositiveClicked(String childName) {
                         child_name = childName;
-                        tv_child_name.setText(child_name);
+                        tv_child_name.setText(child_name +",");
+                        tv_child_name.setTextSize(20);
+                        tv_greeting.setVisibility(View.VISIBLE);
                         tv_child_name.setTextColor(Color.parseColor("#181818"));
                     }
                     @Override
@@ -167,6 +193,57 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
         return rootView;
     }
 
+    public void graphInitSetting(){
+
+        labelList.add("일");
+        labelList.add("월");
+        labelList.add("화");
+        labelList.add("수");
+        labelList.add("목");
+        labelList.add("금");
+        labelList.add("토");
+
+        wordcountList.add(4);
+        wordcountList.add(7);
+        wordcountList.add(3);
+        wordcountList.add(10);
+        wordcountList.add(13);
+        wordcountList.add(6);
+        wordcountList.add(3);
+
+        BarChartGraph(labelList, wordcountList);
+    }
+
+    private void BarChartGraph(ArrayList<String> labelList, ArrayList<Integer> valList) {
+        // BarChart 메소드
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        for (int i = 0; i < valList.size(); i++) {
+            entries.add(new BarEntry((Integer) valList.get(i), i));
+        }
+
+        BarDataSet depenses = new BarDataSet(entries, "학습한 단어 수"); // 변수로 받아서 넣어줘도 됨
+        depenses.setAxisDependency(YAxis.AxisDependency.LEFT);
+        depenses.setValueTextSize(11f);
+        depenses.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+                return (String.valueOf((int)value)) + "개";
+            }
+        });
+        bar_chart.setDescription(" ");
+
+        ArrayList<String> labels = new ArrayList<String>();
+        for (int i = 0; i < labelList.size(); i++) {
+            labels.add((String) labelList.get(i));
+        }
+
+        BarData data = new BarData(labels, depenses);
+        depenses.setColors(ColorTemplate.VORDIPLOM_COLORS);
+
+        bar_chart.setData(data);
+        bar_chart.animateXY(1000, 1000);
+        bar_chart.invalidate();
+    }
 
     @Override
     public CharSequence format(int progress, int max) {
