@@ -64,11 +64,11 @@ public class HomeActivity extends AppCompatActivity {
         //bottom navigation view
         tab=findViewById(R.id.tab);
         //getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, new HomeFragment()).commit(); // initiallize
-        tab.setItemSelected(R.id.book_tab,false);       //set default item
 
         fragmentManager = getSupportFragmentManager();
         f1 = new HomeFragment();
         fragmentManager.beginTransaction().replace(R.id.fragment_contatiner,f1).commit();
+        tab.setItemSelected(R.id.book_tab,false);       //set default item
 
         //바텀 네비게이션뷰 안의 아이템 설정
         tab.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {

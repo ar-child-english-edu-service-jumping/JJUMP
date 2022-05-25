@@ -178,13 +178,13 @@
                         android:orientation="vertical">
                         <com.dinuscxj.progressbar.CircleProgressBar
                             android:id="@+id/circle_bar1"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
                             android:layout_gravity="center_horizontal"
                             app:progress_end_color="#F48219"
                             app:progress_start_color="#F48219"
                             app:progress_stroke_cap="round"
-                            app:progress_stroke_width="17dp "
+                            app:progress_stroke_width="15dp "
                             app:progress_text_color="#181818"
                             app:progress_text_size="17dp"
                             app:style="solid_line"/>
@@ -194,7 +194,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginTop="50dp">
+                        android:layout_marginTop="40dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -214,15 +214,13 @@
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/line2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:src="@drawable/horizontal_line" />
 
             <LinearLayout
