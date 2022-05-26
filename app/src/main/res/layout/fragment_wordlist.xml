@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
+
 
     <ImageView
         android:id="@+id/backgroud_top_wave"
-        android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:scaleType="fitXY"
         android:src="@drawable/bg_top_wave"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/my_wordlist"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
-        android:text="나의 단어장 ️"
-        android:textSize="17dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/notosanskr_bold"
-        android:textColor="#181818"/>
+        android:text="나의 단어장 ️"
+        android:textColor="#181818"
+        android:textSize="17dp"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/notosanskr_bold"
+        android:text="✏️"
+        android:textColor="#181818"
+        android:textSize="20dp"
         android:visibility="invisible"
         app:layout_constraintLeft_toRightOf="@id/my_wordlist"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
-        android:text="✏️"
-        android:textSize="20dp"
-        android:fontFamily="@font/notosanskr_bold"
-        android:textColor="#181818"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ic_logo"
@@ -53,26 +57,82 @@
         android:id="@+id/recycler_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="10dp"
+        android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backgroud_top_wave"/>
+        app:layout_constraintTop_toBottomOf="@+id/backgroud_top_wave" />
 
-    <ImageButton
-        android:id="@+id/btn_quiz"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="80dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:fabCustomSize="70dp"
+        app:maxImageSize="70dp"
+        android:background="@null"
+        app:backgroundTint="@android:color/transparent"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@drawable/btn_plus" />
 
-        android:src="@drawable/btn_quiz_round"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_quiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:fabCustomSize="70dp"
+        app:maxImageSize="70dp"
+        android:background="@null"
+        app:backgroundTint="@android:color/transparent"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fab_more"
+        app:layout_constraintEnd_toEndOf="@+id/fab_more"
+        app:srcCompat="@drawable/floating_btn_quiz" />
 
-        android:elevation="10dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_folder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:fabCustomSize="70dp"
+        app:maxImageSize="70dp"
+        android:background="@null"
+        app:backgroundTint="@android:color/transparent"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fab_quiz"
+        app:layout_constraintEnd_toEndOf="@+id/fab_quiz"
+        app:srcCompat="@drawable/floating_btn_folder" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_ar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:fabCustomSize="70dp"
+        app:maxImageSize="70dp"
+        android:background="@null"
+        app:backgroundTint="@android:color/transparent"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fab_folder"
+        app:layout_constraintEnd_toEndOf="@+id/fab_folder"
+        app:srcCompat="@drawable/floating_btn_ar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

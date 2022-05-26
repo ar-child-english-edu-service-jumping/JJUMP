@@ -10,8 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jjump.R;
 import com.jjump.java.adapter.ItemAdapter;
 import com.jjump.java.adapter.Item;
@@ -25,22 +28,23 @@ public class WordlistFragment extends Fragment {
     private ItemAdapter adapter;
     private RecyclerView recyclerView;
 
+    private Animation rotateOpen;
+    private Animation rotateClose;
+    private Animation fromBottom;
+    private Animation toBottom;
+
+    private FloatingActionButton fab_open;
+    private FloatingActionButton fab_ar;
+    private FloatingActionButton fab_folder;
+    private FloatingActionButton fab_quiz;
+
+    private boolean fab_clicked=false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_wordlist, container, false);
-
-        ImageButton btn_quiz = (ImageButton) rootView.findViewById(R.id.btn_quiz);
-        btn_quiz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), ArQuizActivity.class);
-
-                startActivity(intent);
-            }
-        });
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -48,6 +52,23 @@ public class WordlistFragment extends Fragment {
 
         adapter = new ItemAdapter(buildItemList());
         recyclerView.setAdapter(adapter);
+
+        rotateOpen= AnimationUtils.loadAnimation(getContext(),R.anim.fab_open);
+        rotateClose= AnimationUtils.loadAnimation(getContext(),R.anim.fab_close);
+        fromBottom= AnimationUtils.loadAnimation(getContext(),R.anim.fab_up);
+        toBottom= AnimationUtils.loadAnimation(getContext(),R.anim.fab_down);
+
+        fab_open=rootView.findViewById(R.id.fab_more);
+        fab_ar=rootView.findViewById(R.id.fab_ar);
+        fab_folder=rootView.findViewById(R.id.fab_folder);
+        fab_quiz=rootView.findViewById(R.id.fab_quiz);
+
+        fab_open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onAddButtonClicked();
+            }
+        });
 
 
         return rootView;
@@ -75,6 +96,38 @@ public class WordlistFragment extends Fragment {
             subItemList.add(subItem);
         }
         return subItemList;
+    }
+
+    private void onAddButtonClicked(){
+        setVisibility(fab_clicked);
+        setAnimation(fab_clicked);
+        fab_clicked=!fab_clicked;
+    }
+
+    private void setVisibility(boolean flag){
+        if(!flag){
+            fab_ar.setVisibility(fab_ar.VISIBLE);
+            fab_folder.setVisibility(fab_folder.VISIBLE);
+            fab_quiz.setVisibility(fab_quiz.VISIBLE);
+        }else{
+            fab_ar.setVisibility(fab_ar.INVISIBLE);
+            fab_folder.setVisibility(fab_folder.INVISIBLE);
+            fab_quiz.setVisibility(fab_quiz.INVISIBLE);
+        }
+    }
+
+    private void setAnimation(boolean flag){
+        if(!flag){
+            fab_ar.startAnimation(fromBottom);
+            fab_folder.startAnimation(fromBottom);
+            fab_quiz.startAnimation(fromBottom);
+            fab_open.startAnimation(rotateOpen);
+        }else{
+            fab_ar.startAnimation(toBottom);
+            fab_folder.startAnimation(toBottom);
+            fab_quiz.startAnimation(toBottom);
+            fab_open.startAnimation(rotateClose);
+        }
     }
 
 }
