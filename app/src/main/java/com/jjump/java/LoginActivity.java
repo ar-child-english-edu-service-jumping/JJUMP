@@ -15,8 +15,8 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.jjump.R;
-import com.jjump.java.data.ReqLoginData;
-import com.jjump.java.data.ResLoginData;
+import com.jjump.java.data.RequestDto;
+import com.jjump.java.data.ResponseDto;
 import com.jjump.java.network.ApiInterface;
 import com.jjump.java.network.HttpClient;
 
@@ -33,21 +33,21 @@ public class LoginActivity extends AppCompatActivity {
     private ApiInterface api;
     String email;
 
-    // POST 통신요청
-    public void requestPost() {
-        ReqLoginData reqLoginData = new ReqLoginData(email);
-        Call<ResLoginData> call = api.requestLogin( reqLoginData );
+    //사용자 등록 api
+    public void registerUser() {
+        RequestDto reqLoginData = new RequestDto(email);
+        Call<ResponseDto> call = api.requestLogin( reqLoginData );
 
         // 비동기로 백그라운드 쓰레드로 동작
-        call.enqueue( new Callback<ResLoginData>() {
+        call.enqueue( new Callback<ResponseDto>() {
             // 통신성공 후 텍스트뷰에 결과값 출력
             @Override
-            public void onResponse(Call<ResLoginData> call, Response<ResLoginData> response) {
+            public void onResponse(Call<ResponseDto> call, Response<ResponseDto> response) {
                 Log.i("my tag", response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<ResLoginData> call, Throwable t) {
+            public void onFailure(Call<ResponseDto> call, Throwable t) {
                 Log.i("my tag", "fail!!!!!!!!!!!!!!!!");
                 Log.i("erre", t.toString());
             }
@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
             email = account.getEmail();
             // api call
             api = HttpClient.getRetrofit().create( ApiInterface.class );
-            requestPost();
+            registerUser();
 
             // Signed in successfully, show authenticated UI.
             Intent intent=new Intent(LoginActivity.this,HomeActivity.class);

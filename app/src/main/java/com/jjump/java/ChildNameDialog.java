@@ -14,8 +14,8 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.jjump.R;
-import com.jjump.java.data.ReqNicknameData;
-import com.jjump.java.data.ResNicknameData;
+import com.jjump.java.data.RequestDto;
+import com.jjump.java.data.ResponseDto;
 import com.jjump.java.network.ApiInterface;
 import com.jjump.java.network.HttpClient;
 
@@ -33,21 +33,22 @@ public class ChildNameDialog extends Dialog implements View.OnClickListener{
     String childName;
     String email;
 
-    // POST 통신요청
-    public void requestPost() {
-        ReqNicknameData reqNicknameData = new ReqNicknameData( email, childName);
-        Call<ResNicknameData> call = api.requestNickname( reqNicknameData );
+    //nickname 등록
+    public void requestNickRegister() {
+        RequestDto reqNickRegister = new RequestDto( email );
+        reqNickRegister.setNick(childName);
+        Call<ResponseDto> call = api.requestNickRegister( reqNickRegister );
 
         // 비동기로 백그라운드 쓰레드로 동작
-        call.enqueue( new Callback<ResNicknameData>() {
+        call.enqueue( new Callback<ResponseDto>() {
             // 통신성공 후 텍스트뷰에 결과값 출력
             @Override
-            public void onResponse(Call<ResNicknameData> call, Response<ResNicknameData> response) {
+            public void onResponse(Call<ResponseDto> call, Response<ResponseDto> response) {
                 Log.i("my tag", response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<ResNicknameData> call, Throwable t) {
+            public void onFailure(Call<ResponseDto> call, Throwable t) {
                 Log.i("my tag", "fail!!!!!!!!!!!!!!!!");
                 Log.i("erre", t.toString());
             }
@@ -97,7 +98,7 @@ public class ChildNameDialog extends Dialog implements View.OnClickListener{
                 customDialogListener.onPositiveClicked(childName);
                 // api call
                 api = HttpClient.getRetrofit().create( ApiInterface.class );
-                requestPost();
+                requestNickRegister();
                 dismiss();
                 break;
             case R.id.btn_cancel:
