@@ -1,18 +1,26 @@
 package com.jjump.java.network;
 
-import com.jjump.java.ProfileFragment;
-import com.jjump.java.data.ReqLoginData;
-import com.jjump.java.data.ReqNicknameData;
-import com.jjump.java.data.ResLoginData;
-import com.jjump.java.data.ResNicknameData;
+import com.jjump.java.data.Record;
+import com.jjump.java.data.RequestDto;
+import com.jjump.java.data.ResponseDto;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
-    @POST("post/nickname")
-    Call<ResNicknameData> requestNickname(@Body ReqNicknameData req);
     @POST("login")
-    Call<ResLoginData> requestLogin(@Body ReqLoginData req);
+    Call<ResponseDto> requestLogin(@Body RequestDto req);
+
+    @POST("search/word")
+    Call<ResponseDto> requestWordMean(@Body RequestDto req);
+
+    @POST("post/nickname")
+    Call<ResponseDto> requestNickRegister(@Body RequestDto req);
+
+    @POST("search/record")
+    Call<List<Record>> requestWordSearched(@Body RequestDto req);
+
 }
