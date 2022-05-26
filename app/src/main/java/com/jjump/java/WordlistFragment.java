@@ -36,8 +36,7 @@ public class WordlistFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), ArQuizActivity.class);
-
+                Intent intent = new Intent(getActivity(), QuizActivity.class);
                 startActivity(intent);
             }
         });
