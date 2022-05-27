@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -87,6 +88,7 @@ public class WordlistFragment extends Fragment {
         fab_folder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ImageButton btn_back;
                 onAddButtonClicked();
 
                 Dialog dialog=new Dialog(getContext());
@@ -98,6 +100,14 @@ public class WordlistFragment extends Fragment {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.getWindow().getAttributes().windowAnimations=R.style.DialogAnimation;
                 dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+                btn_back = dialog.findViewById(R.id.btn_back);
+                btn_back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
             }
         });
 
