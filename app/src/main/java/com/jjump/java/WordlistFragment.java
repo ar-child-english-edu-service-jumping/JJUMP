@@ -37,6 +37,7 @@ public class WordlistFragment extends Fragment {
     private FloatingActionButton fab_ar;
     private FloatingActionButton fab_folder;
     private FloatingActionButton fab_quiz;
+    private View hide_view;
 
     private boolean fab_clicked=false;
 
@@ -57,6 +58,8 @@ public class WordlistFragment extends Fragment {
         rotateClose= AnimationUtils.loadAnimation(getContext(),R.anim.fab_close);
         fromBottom= AnimationUtils.loadAnimation(getContext(),R.anim.fab_up);
         toBottom= AnimationUtils.loadAnimation(getContext(),R.anim.fab_down);
+
+        hide_view = rootView.findViewById(R.id.hide_view);
 
         fab_open=rootView.findViewById(R.id.fab_more);
         fab_ar=rootView.findViewById(R.id.fab_ar);
@@ -116,10 +119,12 @@ public class WordlistFragment extends Fragment {
             fab_ar.setVisibility(fab_ar.VISIBLE);
             fab_folder.setVisibility(fab_folder.VISIBLE);
             fab_quiz.setVisibility(fab_quiz.VISIBLE);
+            hide_view.setVisibility(hide_view.VISIBLE);
         }else{
             fab_ar.setVisibility(fab_ar.INVISIBLE);
             fab_folder.setVisibility(fab_folder.INVISIBLE);
             fab_quiz.setVisibility(fab_quiz.INVISIBLE);
+            hide_view.setVisibility(hide_view.INVISIBLE);
         }
     }
 
