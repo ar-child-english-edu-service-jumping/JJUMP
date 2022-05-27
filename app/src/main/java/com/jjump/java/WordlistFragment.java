@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jjump.R;
+import com.jjump.java.adapter.DialogAdapter;
 import com.jjump.java.adapter.ItemAdapter;
 import com.jjump.java.adapter.Item;
 import com.jjump.java.adapter.SubItem;
@@ -44,6 +45,7 @@ public class WordlistFragment extends Fragment {
     private ItemAdapter adapter;
     private RecyclerView recyclerView;
 
+    // fab animation
     private Animation rotateOpen;
     private Animation rotateClose;
     private Animation fromBottom;
@@ -53,11 +55,10 @@ public class WordlistFragment extends Fragment {
     private FloatingActionButton fab_ar;
     private FloatingActionButton fab_folder;
     private FloatingActionButton fab_quiz;
-    private View hide_view;
+    private View hide_view;     // blocking bg when fam opened
 
     private boolean fab_clicked=false;
 
-    List<Map<String, Object>> dialogItemList;
     //배열을 arrayList로 바꿔서 요소 추가 가능하도록
     String[] text = {"동물 친구들", "다시 보고 싶어용", "헷갈려요","스크롤 되나염?"};
     List text_array = new ArrayList (Arrays.asList(text));
@@ -86,7 +87,6 @@ public class WordlistFragment extends Fragment {
         text_array.add("헷갈려요");
         text_array.add("스크롤 되나염?");
 
-
         hide_view = rootView.findViewById(R.id.hide_view);
 
         fab_open=rootView.findViewById(R.id.fab_more);
@@ -110,61 +110,7 @@ public class WordlistFragment extends Fragment {
         fab_folder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImageButton btn_back;
-                Button btn_add_folder;
-                onAddButtonClicked();
-
-                Dialog dialog=new Dialog(getContext());
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.dialog_folder);
-
-                dialog.show();
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.getWindow().getAttributes().windowAnimations=R.style.DialogAnimation;
-                dialog.getWindow().setGravity(Gravity.BOTTOM);
-
-                ListView listview = dialog.findViewById(R.id.listview_folder);
-                //add item to listview in dialog
-                dialogItemList = new ArrayList<>();
-
-                for(int i=0;i<text.length;i++)
-                {
-                    Map<String, Object> itemMap = new HashMap<>();
-                    itemMap.put(TAG_TEXT, text[i]);
-                    dialogItemList.add(itemMap);
-                }
-
-                SimpleAdapter simpleAdapter = new SimpleAdapter(getContext(), dialogItemList,
-                        R.layout.item_folder,
-                        new String[]{TAG_TEXT},
-                        new int[]{ R.id.tv_folder_name});
-
-                listview.setAdapter(simpleAdapter);
-                //리스트뷰 click event
-                listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(getContext(),text[position],Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                btn_back = dialog.findViewById(R.id.btn_back);
-                btn_back.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                btn_add_folder = dialog.findViewById(R.id.btn_add_folder);
-                btn_add_folder.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getContext(),"몰라몰라잉 ㅜ~",Toast.LENGTH_LONG).show();
-
-                    }
-                });
+                onFolderButtonClicked();
             }
         });
 
@@ -229,4 +175,55 @@ public class WordlistFragment extends Fragment {
         }
     }
 
+    private void onFolderButtonClicked(){
+        ImageButton btn_back;
+        Button btn_add_folder;
+        onAddButtonClicked();
+
+        // bottom sheet dialog
+        Dialog dialog=new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_folder);
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations=R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+        ListView listview = dialog.findViewById(R.id.listview_folder);
+
+        // list item in dialog showing existing folders
+        DialogAdapter dialogAdapter=new DialogAdapter();
+        for(int i=0;i<text.length;i++) {
+            dialogAdapter.addItem(text[i]);
+        }
+        adapter.notifyDataSetChanged();
+
+        listview.setAdapter(dialogAdapter);
+        //리스트뷰 click event
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getContext(),text[position],Toast.LENGTH_LONG).show();
+            }
+        });
+
+        btn_back = dialog.findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        btn_add_folder = dialog.findViewById(R.id.btn_add_folder);
+        btn_add_folder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"몰라몰라잉 ㅜ~",Toast.LENGTH_LONG).show();
+
+            }
+        });
+    }
 }
