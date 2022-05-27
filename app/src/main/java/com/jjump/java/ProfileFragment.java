@@ -204,8 +204,8 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
         labelList.add("토");
 
         wordcountList.add(4);
+        wordcountList.add(9);
         wordcountList.add(7);
-        wordcountList.add(3);
         wordcountList.add(10);
         wordcountList.add(13);
         wordcountList.add(6);
@@ -238,7 +238,7 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
         }
 
         BarData data = new BarData(labels, depenses);
-        depenses.setColors(ColorTemplate.VORDIPLOM_COLORS);
+        depenses.setColors(ColorTemplate.JOYFUL_COLORS);
 
         bar_chart.setData(data);
         bar_chart.animateXY(1000, 1000);

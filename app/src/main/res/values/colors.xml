@@ -12,7 +12,7 @@
     <color name="blue">#4286f4</color>
     <color name="red">#f44242</color>
 
-    <color name="navigation_read">#F8861B</color>
-    <color name="navigation_word">#FFCD00</color>
-    <color name="navigation_profile">#96CF7B</color>
+    <color name="navigation_read">#F87800</color>
+    <color name="navigation_word">#4286f4</color>
+    <color name="navigation_profile">#4A9128</color>
 </resources>
