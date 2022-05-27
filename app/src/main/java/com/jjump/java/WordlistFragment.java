@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +18,12 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jjump.R;
@@ -27,9 +32,14 @@ import com.jjump.java.adapter.Item;
 import com.jjump.java.adapter.SubItem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WordlistFragment extends Fragment {
+
+    private static final String TAG_TEXT = "text";
 
     private ItemAdapter adapter;
     private RecyclerView recyclerView;
@@ -46,6 +56,11 @@ public class WordlistFragment extends Fragment {
     private View hide_view;
 
     private boolean fab_clicked=false;
+
+    List<Map<String, Object>> dialogItemList;
+    //배열을 arrayList로 바꿔서 요소 추가 가능하도록
+    String[] text = {"동물 친구들", "다시 보고 싶어용", "헷갈려요","스크롤 되나염?"};
+    List text_array = new ArrayList (Arrays.asList(text));
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +79,13 @@ public class WordlistFragment extends Fragment {
         rotateClose= AnimationUtils.loadAnimation(getContext(),R.anim.fab_close);
         fromBottom= AnimationUtils.loadAnimation(getContext(),R.anim.fab_up);
         toBottom= AnimationUtils.loadAnimation(getContext(),R.anim.fab_down);
+
+        //add folder to folder name array list
+        text_array.add("동물 친구들");
+        text_array.add("다시 보고 싶어용");
+        text_array.add("헷갈려요");
+        text_array.add("스크롤 되나염?");
+
 
         hide_view = rootView.findViewById(R.id.hide_view);
 
@@ -89,6 +111,7 @@ public class WordlistFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ImageButton btn_back;
+                Button btn_add_folder;
                 onAddButtonClicked();
 
                 Dialog dialog=new Dialog(getContext());
@@ -101,11 +124,45 @@ public class WordlistFragment extends Fragment {
                 dialog.getWindow().getAttributes().windowAnimations=R.style.DialogAnimation;
                 dialog.getWindow().setGravity(Gravity.BOTTOM);
 
+                ListView listview = dialog.findViewById(R.id.listview_folder);
+                //add item to listview in dialog
+                dialogItemList = new ArrayList<>();
+
+                for(int i=0;i<text.length;i++)
+                {
+                    Map<String, Object> itemMap = new HashMap<>();
+                    itemMap.put(TAG_TEXT, text[i]);
+                    dialogItemList.add(itemMap);
+                }
+
+                SimpleAdapter simpleAdapter = new SimpleAdapter(getContext(), dialogItemList,
+                        R.layout.item_folder,
+                        new String[]{TAG_TEXT},
+                        new int[]{ R.id.tv_folder_name});
+
+                listview.setAdapter(simpleAdapter);
+                //리스트뷰 click event
+                listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Toast.makeText(getContext(),text[position],Toast.LENGTH_LONG).show();
+                    }
+                });
+
                 btn_back = dialog.findViewById(R.id.btn_back);
                 btn_back.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
+                    }
+                });
+
+                btn_add_folder = dialog.findViewById(R.id.btn_add_folder);
+                btn_add_folder.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getContext(),"몰라몰라잉 ㅜ~",Toast.LENGTH_LONG).show();
+
                     }
                 });
             }
