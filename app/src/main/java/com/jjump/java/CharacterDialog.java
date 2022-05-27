@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -47,7 +46,7 @@ public class CharacterDialog extends Dialog implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_character_dialog);
+        setContentView(R.layout.dialog_character);
 
         for(int i=0; i < btnNumsIds.length; i++){
             btnNums[i] = findViewById(btnNumsIds[i]);
