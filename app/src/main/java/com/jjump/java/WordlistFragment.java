@@ -208,6 +208,8 @@ public class WordlistFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(getActivity(),AnimalCategoryActivity.class);
+                startActivity(intent);
                 Toast.makeText(getContext(),text[position],Toast.LENGTH_LONG).show();
             }
         });
@@ -224,8 +226,6 @@ public class WordlistFragment extends Fragment {
         btn_add_folder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),CategoryActivity.class);
-                startActivity(intent);
                 Toast.makeText(getContext(),"몰라몰라잉 ㅜ~",Toast.LENGTH_LONG).show();
             }
         });

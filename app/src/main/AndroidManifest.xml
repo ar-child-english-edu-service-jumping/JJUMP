@@ -32,6 +32,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".java.AnimalCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".java.CategoryActivity"
             android:exported="false" />
         <activity
@@ -45,7 +48,7 @@
             android:exported="true" />
         <activity
             android:name=".java.HomeActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".java.CameraXLivePreviewActivity"
             android:exported="true" />
