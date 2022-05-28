@@ -12,7 +12,10 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.jjump.R;
 
@@ -31,6 +34,11 @@ public class QuizFragment extends Fragment {
     private int quizBtnSize_normal;
     private int quizBtnSize_current;
 
+    //문제용 변수들
+    private TextView txtQuiz;
+    private Animation quiz_out;
+    private String[] quiz_set={"meticulous", "negligible" , "endemic", "altercation" , "capricious","capricious"};
+
 
     // 4지 선다용 변수들
     private Button answer1;
@@ -40,9 +48,9 @@ public class QuizFragment extends Fragment {
 
     private Button targetBtn;
 
-    private String[][] questions = {{"a", "b", "c", "d"}, {"e", "f", "g", "h"}, {"a", "b", "c", "d"}, {"f", "r", "se", "x"}, {"a", "b", "c", "d"}};
+    private String[][] questions = {{"세심한", "불안해하는", "정교한", "대단한"}, {"대단한", "하찮은", "사소한", "높은"}, {"토착의", "새로운", "구시대적인", "정밀한"}, {"장난", "토론", "언쟁", "소모"}, {"기분좋은", "피곤한", "장난끼많은", "변덕스러운"}};
 
-    private int[] answers = {0, 1, 2, 3, 0, -1};
+    private int[] answers = {0, 1, 1, 2, 3, -1};
 
     private int state = 0;
     private int max_question_num = 5;
@@ -74,6 +82,9 @@ public class QuizFragment extends Fragment {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         quizBtnSize_normal = metrics.widthPixels * 12 / 100;
         quizBtnSize_current = metrics.widthPixels * 15 / 100;
+
+        txtQuiz=rootView.findViewById(R.id.tv_question);
+        quiz_out= AnimationUtils.loadAnimation(getContext(),R.anim.quiz_out);
 
         normalFont = Typeface.createFromAsset(getActivity().getAssets(), "notosnaskr_medium.otf");
         boldFont = Typeface.createFromAsset(getActivity().getAssets(), "notosanskr_bold.otf");
@@ -120,6 +131,9 @@ public class QuizFragment extends Fragment {
 
     private void changeQuestion() {
 
+        // 문제 교체
+        txtQuiz.startAnimation(quiz_out);
+
         // 정답 표시
         switch (answers[state]) {
             case 0:
@@ -153,9 +167,12 @@ public class QuizFragment extends Fragment {
                 if (state == max_question_num - 1) {
                     return;
                 }
-                quiz_nums.get(state).setBackgroundResource(R.drawable.btn_quiz_number);
-                quiz_nums.get(state).setTypeface(normalFont);
-                ViewGroup.LayoutParams lp = quiz_nums.get(state).getLayoutParams();
+                txtQuiz.setText(quiz_set[state+1]);
+
+                // Quiz number changes
+                quiz_nums.get(state).setBackgroundResource(R.drawable.btn_quiz_number);     // background
+                quiz_nums.get(state).setTypeface(normalFont);                               //font
+                ViewGroup.LayoutParams lp = quiz_nums.get(state).getLayoutParams();         //btn size
                 lp.width = quizBtnSize_normal;
                 lp.height = quizBtnSize_normal;
                 quiz_nums.get(state).setLayoutParams(lp);
@@ -167,6 +184,7 @@ public class QuizFragment extends Fragment {
                 lp2.height = quizBtnSize_current;
                 quiz_nums.get(state + 1).setLayoutParams(lp2);
 
+                // Quiz questions change
                 targetBtn.setBackgroundResource(R.drawable.btn_quiz_answer);
                 targetBtn.setTypeface(normalFont);
 
