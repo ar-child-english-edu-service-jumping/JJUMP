@@ -1,11 +1,14 @@
 package com.jjump.java;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Handler;
 import android.util.DisplayMetrics;
@@ -37,7 +40,7 @@ public class QuizFragment extends Fragment {
     //문제용 변수들
     private TextView txtQuiz;
     private Animation quiz_out;
-    private String[] quiz_set={"meticulous", "negligible" , "endemic", "altercation" , "capricious","capricious"};
+    private String[] quiz_set={"meticulous", "negligible" , "endemic", "altercation" , "capricious",""};
 
 
     // 4지 선다용 변수들
@@ -59,6 +62,7 @@ public class QuizFragment extends Fragment {
     private Typeface boldFont;
 
     private int entered_input = -1;
+    private int correct_answer=0;
 
 
     @Override
@@ -131,6 +135,9 @@ public class QuizFragment extends Fragment {
 
     private void changeQuestion() {
 
+        if(entered_input==answers[state])
+            correct_answer++;
+
         // 문제 교체
         txtQuiz.startAnimation(quiz_out);
 
@@ -164,9 +171,6 @@ public class QuizFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (state == max_question_num - 1) {
-                    return;
-                }
                 txtQuiz.setText(quiz_set[state+1]);
 
                 // Quiz number changes
@@ -177,12 +181,14 @@ public class QuizFragment extends Fragment {
                 lp.height = quizBtnSize_normal;
                 quiz_nums.get(state).setLayoutParams(lp);
 
-                quiz_nums.get(state + 1).setBackgroundResource(R.drawable.btn_quiz_number_current);
-                quiz_nums.get(state+1).setTypeface(boldFont);
-                ViewGroup.LayoutParams lp2 = quiz_nums.get(state + 1).getLayoutParams();
-                lp2.width = quizBtnSize_current;
-                lp2.height = quizBtnSize_current;
-                quiz_nums.get(state + 1).setLayoutParams(lp2);
+                if (state < max_question_num-1) {
+                    quiz_nums.get(state + 1).setBackgroundResource(R.drawable.btn_quiz_number_current);
+                    quiz_nums.get(state + 1).setTypeface(boldFont);
+                    ViewGroup.LayoutParams lp2 = quiz_nums.get(state + 1).getLayoutParams();
+                    lp2.width = quizBtnSize_current;
+                    lp2.height = quizBtnSize_current;
+                    quiz_nums.get(state + 1).setLayoutParams(lp2);
+                }
 
                 // Quiz questions change
                 targetBtn.setBackgroundResource(R.drawable.btn_quiz_answer);
@@ -194,8 +200,18 @@ public class QuizFragment extends Fragment {
                 answer4.setText(questions[state][3]);
 
                 state++;
+                if (state == max_question_num) {
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(getContext());
+                    dlg.setTitle("오늘의 퀴즈 결과는...!"); //제목
+                    dlg.setMessage(correct_answer+"문제 맞췄습니다~!"); // 메시지
+                    dlg.setPositiveButton("확인",new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog, int which) {
+                            getActivity().finish();
+                        }
+                    });
+                    dlg.show();
+                }
             }
         }, 1000);
-
     }
 }
