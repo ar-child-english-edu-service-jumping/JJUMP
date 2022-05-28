@@ -2,6 +2,7 @@ package com.jjump.java.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.jjump.R;
+import com.jjump.java.HomeActivity;
 
 import java.util.List;
 
@@ -33,6 +35,24 @@ public class SubItemAdapter extends RecyclerView.Adapter<SubItemAdapter.SubItemV
         SubItem subItem = subItemList.get(i);
         subItemViewHolder.frontWord.setText(subItem.getFrontWord());
         subItemViewHolder.backWord.setText(subItem.getBackWord());
+        if(HomeActivity.bookmarkFlag)
+            subItemViewHolder.bookmark.setVisibility(View.VISIBLE);
+        else
+            subItemViewHolder.bookmark.setVisibility(View.INVISIBLE);
+
+        subItemViewHolder.bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(subItem.getFlag()) {
+                    subItemViewHolder.bookmark.setImageResource(R.drawable.ic_bookmark);
+                    subItem.setFlag(false);
+                }else{
+                    subItemViewHolder.bookmark.setImageResource(R.drawable.ic_bookmark_add);
+                    subItem.setFlag(true);
+
+                }
+            }
+        });
     }
 
     @Override
@@ -43,11 +63,13 @@ public class SubItemAdapter extends RecyclerView.Adapter<SubItemAdapter.SubItemV
     class SubItemViewHolder extends RecyclerView.ViewHolder {
         TextView frontWord;
         TextView backWord;
+        ImageButton bookmark;
 
         SubItemViewHolder(View itemView) {
             super(itemView);
             frontWord = itemView.findViewById(R.id.card_front);
             backWord = itemView.findViewById(R.id.card_back);
+            bookmark = itemView.findViewById(R.id.bookmark);
         }
     }
 }

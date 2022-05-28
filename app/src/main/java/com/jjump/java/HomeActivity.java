@@ -25,6 +25,8 @@ public class HomeActivity extends AppCompatActivity {
 
     ChipNavigationBar tab;
 
+    public static boolean bookmarkFlag=false;
+
     public static ArrayList<String> tempDB;
     public static ArrayList<String> textContainer;  // Array list for holding recognized words
     public static long startTime=0;
@@ -51,6 +53,8 @@ public class HomeActivity extends AppCompatActivity {
             Uri personPhoto = acct.getPhotoUrl();
         }
         */
+
+        bookmarkFlag=false;
 
         // array list for holding recognized text
         textContainer = new ArrayList<>();

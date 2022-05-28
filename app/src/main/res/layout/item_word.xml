@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginRight="12dp"
-    android:layout_marginBottom="12dp"
-    android:orientation="vertical">
+    android:layout_marginBottom="12dp">
 
     <com.wajahatkarim3.easyflipview.EasyFlipView
         android:layout_width="145dp"
@@ -46,4 +45,14 @@
 
     </com.wajahatkarim3.easyflipview.EasyFlipView>
 
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/bookmark"
+        android:visibility="visible"
+        android:layout_marginTop="0.1dp"
+        android:layout_marginStart="95dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:backgroundTint="#00ffffff"
+        android:src="@drawable/ic_bookmark"/>
+
+</FrameLayout>

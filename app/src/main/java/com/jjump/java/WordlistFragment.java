@@ -69,6 +69,9 @@ public class WordlistFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_wordlist, container, false);
 
+        //bookmark invisible
+        HomeActivity.bookmarkFlag = false;
+
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -221,8 +224,9 @@ public class WordlistFragment extends Fragment {
         btn_add_folder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),CategoryActivity.class);
+                startActivity(intent);
                 Toast.makeText(getContext(),"몰라몰라잉 ㅜ~",Toast.LENGTH_LONG).show();
-
             }
         });
     }
