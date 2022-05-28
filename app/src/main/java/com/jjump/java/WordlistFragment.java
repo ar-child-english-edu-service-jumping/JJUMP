@@ -106,6 +106,7 @@ public class WordlistFragment extends Fragment {
         fab_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onAddButtonClicked();
                 Intent intent = new Intent(getActivity(), QuizActivity.class);
                 startActivity(intent);
             }

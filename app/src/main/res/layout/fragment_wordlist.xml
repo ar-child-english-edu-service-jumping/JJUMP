@@ -64,11 +64,11 @@
         android:id="@+id/hide_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="invisible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="invisible"
-        android:background="#56000000"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_more"

@@ -111,11 +111,11 @@
             android:text="가위"
             android:textSize="18dp"
             android:textColor="#181818"
-            android:fontFamily="@font/notosanskr_bold"
+            android:fontFamily="@font/notosnaskr_medium"
             android:layout_width="170dp"
             android:layout_height="130dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_quiz_answer_correct"/>
+            android:background="@drawable/btn_quiz_answer"/>
         <Button
             android:id="@+id/answer_3"
             android:text="실"
