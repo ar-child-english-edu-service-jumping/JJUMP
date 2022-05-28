@@ -1,6 +1,7 @@
 package com.jjump.java.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jjump.R;
+import com.jjump.java.CategoryActivity;
 
 import java.util.ArrayList;
 
@@ -51,7 +53,9 @@ public class DialogAdapter extends BaseAdapter {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(parent.getContext(),"Folder add",Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(context, CategoryActivity.class);
+                context.startActivity(intent);
+                //Toast.makeText(parent.getContext(),"Folder add",Toast.LENGTH_LONG).show();
             }
         });
 

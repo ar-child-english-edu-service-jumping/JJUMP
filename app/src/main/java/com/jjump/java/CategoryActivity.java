@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.jjump.R;
@@ -21,6 +22,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     private ItemAdapter adapter;
     private RecyclerView recyclerView;
+    private ImageButton btn_done;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,15 @@ public class CategoryActivity extends AppCompatActivity {
 
         HomeActivity.bookmarkFlag=true;
 
+        btn_done     = findViewById(R.id.btn_done);
+        btn_done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         recyclerView = findViewById(R.id.recycler_view_);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
