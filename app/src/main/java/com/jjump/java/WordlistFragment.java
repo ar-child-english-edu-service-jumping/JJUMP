@@ -107,13 +107,13 @@ public class WordlistFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 onAddButtonClicked();
-                Intent intent = new Intent(getActivity(), QuizActivity.class);
-                startActivity(intent);
+                onQuizButtonClicked();
             }
         });
         fab_folder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onAddButtonClicked();
                 onFolderButtonClicked();
             }
         });
@@ -182,7 +182,6 @@ public class WordlistFragment extends Fragment {
     private void onFolderButtonClicked(){
         ImageButton btn_back;
         Button btn_add_folder;
-        onAddButtonClicked();
 
         // bottom sheet dialog
         Dialog dialog=new Dialog(getContext());
@@ -211,7 +210,6 @@ public class WordlistFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent=new Intent(getActivity(),AnimalCategoryActivity.class);
                 startActivity(intent);
-                Toast.makeText(getContext(),text[position],Toast.LENGTH_LONG).show();
             }
         });
 
@@ -228,6 +226,49 @@ public class WordlistFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"몰라몰라잉 ㅜ~",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void onQuizButtonClicked(){
+
+        ImageButton btn_back;
+        ListView listview;
+
+        // bottom sheet dialog
+        Dialog dialog=new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_folder_select);
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations=R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+        listview = dialog.findViewById(R.id.listview_folder_select);
+        // list item in dialog showing existing folders
+        DialogAdapter dialogAdapter=new DialogAdapter();
+        for(int i=0;i<text.length;i++) {
+            dialogAdapter.addItem(text[i]);
+        }
+        adapter.notifyDataSetChanged();
+
+        listview.setAdapter(dialogAdapter);
+        //리스트뷰 click event
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), QuizActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_back = dialog.findViewById(R.id.btn_back_select);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
     }
