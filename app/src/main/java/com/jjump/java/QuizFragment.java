@@ -2,7 +2,9 @@ package com.jjump.java;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
@@ -16,10 +18,12 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jjump.R;
 
@@ -64,6 +68,11 @@ public class QuizFragment extends Fragment {
 
     private int entered_input = -1;
     private int correct_answer=0;
+    private int score = 100; //100점 만점으로 점수 계산
+
+    //퀴즈 결과 다이얼로그 텍스트뷰
+    TextView quiz_result_here;
+    TextView quiz_score_here;
 
 
     @Override
@@ -237,15 +246,27 @@ public class QuizFragment extends Fragment {
 
                 state++;
                 if (state == max_question_num) {
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(getContext());
-                    dlg.setTitle("오늘의 퀴즈 결과는...!"); //제목
-                    dlg.setMessage(correct_answer+"문제 맞췄습니다~!"); // 메시지
-                    dlg.setPositiveButton("확인",new DialogInterface.OnClickListener(){
-                        public void onClick(DialogInterface dialog, int which) {
-                            getActivity().finish();
+                    score = correct_answer / 5 * 100;
+                    //퀴즈 결과 다이얼로그
+                    QuizResultDialog dialog = new QuizResultDialog(getActivity());
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.setContentView(R.layout.dialog_quiz_result);
+                    dialog.show();
+                    //점수와 맞춘 문제 개수 반영
+                    quiz_result_here = (TextView)dialog.findViewById(R.id.quiz_result_here);
+                    quiz_score_here = dialog.findViewById(R.id.quiz_score_here);
+                    quiz_result_here.setText(correct_answer + "문제를 맞췄어요!");
+                    quiz_score_here.setText(score + "점");
+                    dialog.setDialogListener(new QuizResultDialog.CustomDialogListener() {
+                        @Override
+                        public void onPositiveClicked() {
+                        }
+                        @Override
+                        public void onNegativeClicked() {
                         }
                     });
-                    dlg.show();
+
                 }
             }
         }, 1000);
