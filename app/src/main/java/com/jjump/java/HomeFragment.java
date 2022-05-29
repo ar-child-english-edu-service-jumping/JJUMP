@@ -21,6 +21,8 @@ import com.jjump.R;
 
 public class HomeFragment extends Fragment {
 
+    public static boolean treeGrownTo3Flag=false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,10 +44,18 @@ public class HomeFragment extends Fragment {
         ImageView ic_tree1 = rootView.findViewById(R.id.ic_tree1);
         ImageView ic_tree2 = rootView.findViewById(R.id.ic_tree2);
         ImageView ic_tree3 = rootView.findViewById(R.id.ic_tree3);
-        // 기준 별 visibility 설정하기
-        ic_tree1.setVisibility(View.INVISIBLE);
-        ic_tree2.setVisibility(View.VISIBLE);
-        ic_tree3.setVisibility(View.INVISIBLE);
+
+        treeGrownTo3Flag=false;
+        // 데모에서 처음엔 나무 2단계, 퀴즈 한번 보고 오면 나무 3단계로
+        if(treeGrownTo3Flag){
+            ic_tree1.setVisibility(View.INVISIBLE);
+            ic_tree2.setVisibility(View.INVISIBLE);
+            ic_tree3.setVisibility(View.VISIBLE);
+        } else{
+            ic_tree1.setVisibility(View.INVISIBLE);
+            ic_tree2.setVisibility(View.VISIBLE);
+            ic_tree3.setVisibility(View.INVISIBLE);
+        }
         // Glide 이용하여 gif 띄우기
         GlideDrawableImageViewTarget gif_tree1 = new GlideDrawableImageViewTarget(ic_tree1);
         GlideDrawableImageViewTarget gif_tree2 = new GlideDrawableImageViewTarget(ic_tree2);

@@ -67,8 +67,8 @@ public class QuizFragment extends Fragment {
     private Typeface boldFont;
 
     private int entered_input = -1;
-    private int correct_answer=0;
-    private int score = 100; //100점 만점으로 점수 계산
+    private int correct_answer = 0;
+    private int score = 0; //100점 만점으로 점수 계산
 
     //퀴즈 결과 다이얼로그 텍스트뷰
     TextView quiz_result_here;
@@ -162,8 +162,11 @@ public class QuizFragment extends Fragment {
 
     private void changeQuestion() {
 
-        if(entered_input==answers[state])
+        if(entered_input==answers[state]){
             correct_answer++;
+            score += 20;
+        }
+
 
         // 문제 교체
         txtQuiz.startAnimation(quiz_out);
@@ -188,29 +191,22 @@ public class QuizFragment extends Fragment {
         targetBtn.setBackgroundResource(R.drawable.btn_quiz_answer_correct);
         targetBtn.setTypeface(boldFont);
 
+        MediaPlayer mediaPlayer;
         if (answers[state] == entered_input) {
             // sound correct
-            MediaPlayer mediaPlayer = MediaPlayer.create(getContext(),R.raw.sound_correct);
-            mediaPlayer.start();
-            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    mediaPlayer.stop();
-                    mediaPlayer.release();
-                }
-            });
+            mediaPlayer = MediaPlayer.create(getContext(), R.raw.sound_correct);
         } else {
             // sound wrong
-            MediaPlayer mediaPlayer = MediaPlayer.create(getContext(),R.raw.sound_wrong);
-            mediaPlayer.start();
-            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    mediaPlayer.stop();
-                    mediaPlayer.release();
-                }
-            });
+            mediaPlayer = MediaPlayer.create(getContext(), R.raw.sound_wrong);
         }
+        mediaPlayer.start();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+            }
+        });
 
         //1초뒤 다음 문제로
         new Handler().postDelayed(new Runnable() {
@@ -246,7 +242,6 @@ public class QuizFragment extends Fragment {
 
                 state++;
                 if (state == max_question_num) {
-                    score = correct_answer / 5 * 100;
                     //퀴즈 결과 다이얼로그
                     QuizResultDialog dialog = new QuizResultDialog(getActivity());
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
