@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -222,12 +224,20 @@ public class ArCategoryActivity extends AppCompatActivity {
                     else if(selectedModel.equals(modelDog)){
                         andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
                         andy.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 90f));
+                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 0, 1f), 90f));
+                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
+                        andy.setWorldRotation(Quaternion.axisAngle(new Vector3(0, 0, 1f), -90f));
+                        andy.setLocalScale(new Vector3(0.01f,0.01f,0.01f));
                         andy.setParent(anchorNode);
                         andy.setRenderable(modelDog);
                     }
                     else if(selectedModel.equals(modelDeer)){
                         andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
                         andy.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 90f));
+                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 0, 1f), 90f));
+                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
+                        andy.setWorldRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
+                        andy.setWorldScale(new Vector3(0.01f,0.01f,0.01f));
                         andy.setParent(anchorNode);
                         andy.setRenderable(modelDeer);
                     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +20,7 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder>{
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView ;
+        Button textView ;
 
         ViewHolder(View itemView) {
             super(itemView) ;
