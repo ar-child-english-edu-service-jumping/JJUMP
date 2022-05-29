@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -79,6 +80,17 @@ public class ArActivity extends AppCompatActivity {
                     andy.setParent(anchorNode);
                     andy.setRenderable(modelWolf);
                     andy.select();
+
+                    MediaPlayer mediaPlayer;
+                    mediaPlayer=MediaPlayer.create(ArActivity.this,R.raw.wolf_sound);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mediaPlayer.stop();
+                            mediaPlayer.release();
+                        }
+                    });
                 });
     }
 

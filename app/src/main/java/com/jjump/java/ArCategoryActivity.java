@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,7 @@ import com.jjump.java.adapter.TextAdapter;
 
 import java.util.ArrayList;
 
+// Shows multiple Ar models included in selected category
 public class ArCategoryActivity extends AppCompatActivity {
 
     private static final String TAG = "arError";
@@ -45,9 +47,9 @@ public class ArCategoryActivity extends AppCompatActivity {
     private ModelRenderable modelDeer;
     private ModelRenderable modelFrog;
 
-    private ModelRenderable selectedModel;
+    private ModelRenderable selectedModel;      // selected model
 
-    private int modelNum=0;
+    private MediaPlayer mediaPlayer;            // model sound
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,7 @@ public class ArCategoryActivity extends AppCompatActivity {
             return;
         }
 
+        // Shows model candidates with recycler view
         // set text adapter
         RecyclerView recyclerView=findViewById(R.id.textContainer_ar);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -68,12 +71,14 @@ public class ArCategoryActivity extends AppCompatActivity {
         TextAdapter textAdapter=new TextAdapter(animal_category);
         recyclerView.setAdapter(textAdapter);
 
+        // math up each model when selected
         textAdapter.setOnItemClickListener(new TextAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 String animal=animal_category.get(position);
                 if(animal.equals("Dog")){
                     selectedModel=modelDog;
+                    mediaPlayer=MediaPlayer.create(ArCategoryActivity.this,R.raw.dog_sound);
                 }
                 else if(animal.equals("Cat")){
                     selectedModel=modelCat;
@@ -83,12 +88,15 @@ public class ArCategoryActivity extends AppCompatActivity {
                 }
                 else if(animal.equals("Deer")) {
                     selectedModel = modelDeer;
+                    mediaPlayer=MediaPlayer.create(ArCategoryActivity.this,R.raw.deer_sound);
                 }
                 else if(animal.equals("Frog")) {
                     selectedModel = modelFrog;
+                    mediaPlayer=MediaPlayer.create(ArCategoryActivity.this,R.raw.frog_sound);
                 }
                 else{
                     selectedModel=modelWolf;
+                    mediaPlayer=MediaPlayer.create(ArCategoryActivity.this,R.raw.wolf_sound);
                 }
             }
         });
@@ -97,6 +105,7 @@ public class ArCategoryActivity extends AppCompatActivity {
 
         // When you build a Renderable, Sceneform loads its resources in the background while returning
         // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
+        //Build models
 
         ModelRenderable.builder()
                 .setSource(getApplicationContext(), R.raw.bird)
@@ -181,9 +190,10 @@ public class ArCategoryActivity extends AppCompatActivity {
                             return null;
                         });
 
+        //when anchor ready, screen touched
         arFragment.setOnTapArPlaneListener(
                 (HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
-                    if (modelBird == null || modelWolf == null || modelCat == null) {
+                    if (modelFrog == null || modelDeer == null || modelDog == null) {
                         return;
                     }
 
@@ -227,6 +237,15 @@ public class ArCategoryActivity extends AppCompatActivity {
                         andy.setRenderable(modelFrog);
                     }
                     andy.select();
+
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mediaPlayer.stop();
+                            mediaPlayer.release();
+                        }
+                    });
                 });
     }
 
