@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.media.AudioAttributes;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 
@@ -163,8 +164,26 @@ public class QuizFragment extends Fragment {
 
         if (answers[state] == entered_input) {
             // sound correct
+            MediaPlayer mediaPlayer = MediaPlayer.create(getContext(),R.raw.sound_correct);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    mediaPlayer.stop();
+                    mediaPlayer.release();
+                }
+            });
         } else {
             // sound wrong
+            MediaPlayer mediaPlayer = MediaPlayer.create(getContext(),R.raw.sound_wrong);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    mediaPlayer.stop();
+                    mediaPlayer.release();
+                }
+            });
         }
 
         //1초뒤 다음 문제로
