@@ -1,47 +1,30 @@
 {
-  animations: [
-    {
-      path: 'sampledata/frog.fbx',
-    },
-  ],
   materials: [
     {
-      name: 'Material #25',
+      name: '12268_banjofrog_',
       parameters: [
         {
-          baseColor: [
-            0.58799999999999997,
-            0.58799999999999997,
-            0.58799999999999997,
+          baseColor: '12268_banjofrog_diffuse',
+        },
+        {
+          baseColorTint: [
+            1,
+            1,
+            1,
             1,
           ],
         },
         {
-          baseColorMap: null,
+          metallic: 1,
         },
         {
-          normalMap: null,
-        },
-        {
-          interpolatedColor: null,
-        },
-        {
-          metallic: 0,
-        },
-        {
-          metallicMap: null,
-        },
-        {
-          roughness: 1,
-        },
-        {
-          roughnessMap: null,
+          roughness: 0.185695,
         },
         {
           opacity: null,
         },
       ],
-      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
     },
   ],
   model: {
@@ -49,14 +32,22 @@
       'Position',
       'TexCoord',
       'Orientation',
-      'BoneIndices',
-      'BoneWeights',
     ],
     collision: {},
-    file: 'sampledata/frog.fbx',
+    file: 'sampledata/frog.obj',
     name: 'frog',
     recenter: 'root',
-    scale: 1.003468,
+    scale: 0.29641899999999999,
   },
+  samplers: [
+    {
+      file: 'sampledata\\12268_banjofrog_diffuse.jpg',
+      name: '12268_banjofrog_diffuse',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: '12268_banjofrog_diffuse.jpg',
+    },
+  ],
   version: '0.54:2',
 }

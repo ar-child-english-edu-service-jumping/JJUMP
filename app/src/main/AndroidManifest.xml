@@ -32,6 +32,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".java.ArCategoryActivity"
+            android:exported="true" />
+        <activity
             android:name=".java.AnimalCategoryActivity"
             android:exported="false" />
         <activity

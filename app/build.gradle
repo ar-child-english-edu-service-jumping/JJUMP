@@ -137,17 +137,34 @@ configurations {
 }
 apply plugin: 'com.google.ar.sceneform.plugin'
 
-sceneform.asset('sampledata/models/chuteira.fbx',
-        'default',
-        'sampledata/models/chuteira.sfa',
-        'src/main/res/raw/chuteira')
 
-sceneform.asset('sampledata/horse.obj',
+sceneform.asset('sampledata/wolf.obj',
         'default',
-        'sampledata/horse.sfa',
-        'src/main/res/raw/horse')
+        'sampledata/wolf.sfa',
+        'src/main/res/raw/wolf')
 
-sceneform.asset('sampledata/frog.fbx',
+sceneform.asset('sampledata/bird.obj',
+        'default',
+        'sampledata/bird.sfa',
+        'src/main/res/raw/bird')
+
+sceneform.asset('sampledata/dog.obj',
+        'default',
+        'sampledata/dog.sfa',
+        'src/main/res/raw/dog')
+
+
+sceneform.asset('sampledata/cat.obj',
+        'default',
+        'sampledata/cat.sfa',
+        'src/main/res/raw/cat')
+
+sceneform.asset('sampledata/deer.obj',
+        'default',
+        'sampledata/deer.sfa',
+        'src/main/res/raw/deer')
+
+sceneform.asset('sampledata/frog.obj',
         'default',
         'sampledata/frog.sfa',
         'src/main/res/raw/frog')
