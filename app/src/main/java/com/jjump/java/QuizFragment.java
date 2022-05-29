@@ -103,6 +103,11 @@ public class QuizFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 entered_input = 0;
+                //오답 시 선택한 박스 진동
+                if(entered_input!=answers[state]){
+                    Animation shake =AnimationUtils.loadAnimation(getContext(),R.anim.shake);
+                    answer1.startAnimation(shake);
+                }
                 changeQuestion();
             }
         });
@@ -111,6 +116,10 @@ public class QuizFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 entered_input = 1;
+                if(entered_input!=answers[state]){
+                    Animation shake =AnimationUtils.loadAnimation(getContext(),R.anim.shake);
+                    answer2.startAnimation(shake);
+                }
                 changeQuestion();
             }
         });
@@ -119,6 +128,10 @@ public class QuizFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 entered_input = 2;
+                if(entered_input!=answers[state]){
+                    Animation shake =AnimationUtils.loadAnimation(getContext(),R.anim.shake);
+                    answer3.startAnimation(shake);
+                }
                 changeQuestion();
             }
         });
@@ -127,6 +140,10 @@ public class QuizFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 entered_input = 3;
+                if(entered_input!=answers[state]){
+                    Animation shake =AnimationUtils.loadAnimation(getContext(),R.anim.shake);
+                    answer4.startAnimation(shake);
+                }
                 changeQuestion();
             }
         });
