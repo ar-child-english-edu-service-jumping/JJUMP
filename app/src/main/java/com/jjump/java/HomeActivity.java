@@ -32,6 +32,8 @@ public class HomeActivity extends AppCompatActivity {
     public static long startTime=0;
     public static long endTime=0;
 
+    public static int quiz_taken_int;
+
     private FragmentManager fragmentManager;
     private Fragment f1, f2, f3;
 
@@ -54,7 +56,8 @@ public class HomeActivity extends AppCompatActivity {
         }
         */
 
-        bookmarkFlag=false;
+        bookmarkFlag     = false;
+        quiz_taken_int   = 0;
 
         // array list for holding recognized text
         textContainer = new ArrayList<>();
@@ -81,10 +84,9 @@ public class HomeActivity extends AppCompatActivity {
                 switch (i) {
                     //item을 클릭시 id값을 가져와 FrameLayout에 fragment.xml띄우기
                     case R.id.book_tab:
-                        if (f1 == null){
-                            f1 = new HomeFragment();
-                            getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, f1).commit();
-                        }
+
+                        f1 = new HomeFragment();
+                        getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, f1).commit();
                         if (f1 != null) fragmentManager.beginTransaction().show(f1).commit();
                         if (f2 != null) fragmentManager.beginTransaction().hide(f2).commit();
                         if (f3 != null) fragmentManager.beginTransaction().hide(f3).commit();
