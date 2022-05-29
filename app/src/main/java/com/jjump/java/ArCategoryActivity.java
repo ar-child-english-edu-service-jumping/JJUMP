@@ -18,6 +18,7 @@ import android.view.Display;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -257,6 +258,14 @@ public class ArCategoryActivity extends AppCompatActivity {
                         }
                     });
                 });
+
+        Button btn=findViewById(R.id.category_end_btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     public static boolean checkIsSupportedDeviceOrFinish(final Activity activity) {
