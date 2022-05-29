@@ -259,6 +259,7 @@ public class WordlistFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                dialog.dismiss();
                 Intent intent = new Intent(getActivity(), QuizActivity.class);
                 startActivity(intent);
             }

@@ -29,8 +29,11 @@ public class ArActivity extends AppCompatActivity {
 
     private ArFragment arFragment;
     private ModelRenderable andyRenderable;
+    private ModelRenderable modelFrog;
+    private ModelRenderable modelHorse;
+    private ModelRenderable modelShoes;
 
-    private int resource;
+    private int touch_count=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,28 +44,44 @@ public class ArActivity extends AppCompatActivity {
             return;
         }
 
-        Intent intent=getIntent();
-        String model=intent.getExtras().getString("model");
-
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
 
         // When you build a Renderable, Sceneform loads its resources in the background while returning
         // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
 
-        if(model.equals("Frog")){
-            resource=R.raw.frog;
-        }
-        else if (model.equals("Horse"))
-            resource=R.raw.horse;
-        else
-            resource=R.raw.horse;
-
-
         ModelRenderable.builder()
-                .setSource(getApplicationContext(), resource)
+                .setSource(getApplicationContext(), R.raw.frog)
 
                 .build()
-                .thenAccept(renderable -> andyRenderable = renderable)
+                .thenAccept(renderable -> modelFrog = renderable)
+                .exceptionally(
+                        throwable -> {
+                            Toast toast =
+                                    Toast.makeText(getApplicationContext(), "Unable to load andy renderable", Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                            return null;
+                        });
+
+        ModelRenderable.builder()
+                .setSource(getApplicationContext(), R.raw.horse)
+
+                .build()
+                .thenAccept(renderable -> modelHorse = renderable)
+                .exceptionally(
+                        throwable -> {
+                            Toast toast =
+                                    Toast.makeText(getApplicationContext(), "Unable to load andy renderable", Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                            return null;
+                        });
+
+        ModelRenderable.builder()
+                .setSource(getApplicationContext(), R.raw.chuteira)
+
+                .build()
+                .thenAccept(renderable -> modelShoes = renderable)
                 .exceptionally(
                         throwable -> {
                             Toast toast =
@@ -74,7 +93,7 @@ public class ArActivity extends AppCompatActivity {
 
         arFragment.setOnTapArPlaneListener(
                 (HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
-                    if (andyRenderable == null) {
+                    if (modelShoes == null || modelFrog == null || modelHorse == null) {
                         return;
                     }
 
@@ -86,8 +105,19 @@ public class ArActivity extends AppCompatActivity {
                     // Create the transformable andy and add it to the anchor.
                     TransformableNode andy = new TransformableNode(arFragment.getTransformationSystem());
                     andy.setParent(anchorNode);
-                    andy.setRenderable(andyRenderable);
+                    switch (touch_count%3){
+                        case 0:
+                            andy.setRenderable(modelFrog);
+                            break;
+                        case 1:
+                            andy.setRenderable(modelHorse);
+                            break;
+                        case 2:
+                            andy.setRenderable(modelShoes);
+                            break;
+                    }
                     andy.select();
+                    touch_count++;
                 });
     }
 
