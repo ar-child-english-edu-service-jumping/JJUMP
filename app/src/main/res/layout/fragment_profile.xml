@@ -205,7 +205,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="12문제 중 3문제를 맞췄어요 🏆"
+                            android:text="20문제 중 13문제를 맞췄어요 🏆"
                             android:textColor="#181818"
                             android:fontFamily="@font/notosnaskr_medium"/>
 

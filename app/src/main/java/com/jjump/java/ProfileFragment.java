@@ -103,11 +103,8 @@ public class ProfileFragment extends Fragment implements CircleProgressBar.Progr
             }
         });
 
-        //get 총 저장한 단어 개수, save to totalWordCount and settext
-        //total_word_number.setText("총 " + totalWordCount + "개의 단어를 배웠어요!");
-
         // get 학습률, save to studyRate and update progress bar
-        studyRate = 25;
+        studyRate = 65;
         circleProgressBar1.setProgress(studyRate);
 
         // open dialog to enter child name
