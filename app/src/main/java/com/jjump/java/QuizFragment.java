@@ -1,7 +1,8 @@
 package com.jjump.java;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import static com.jjump.java.HomeActivity.quiz_taken_int;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -15,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -242,6 +244,9 @@ public class QuizFragment extends Fragment {
 
                 state++;
                 if (state == max_question_num) {
+                    //퀴즈 보고 나서 나무 성장 시키기 위한 변수
+                    quiz_taken_int = 1;
+                    Log.d("quiz taken", String.valueOf(quiz_taken_int));
                     //퀴즈 결과 다이얼로그
                     QuizResultDialog dialog = new QuizResultDialog(getActivity());
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

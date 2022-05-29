@@ -1,18 +1,13 @@
 package com.jjump.java;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.jjump.R;
 
@@ -24,7 +19,6 @@ public class QuizResultDialog extends Dialog implements View.OnClickListener{
 
     private ImageButton btn_close;
     private QuizResultDialog.CustomDialogListener customDialogListener;
-    //private TextView quiz_result_here;
     Context mContext;
 
     interface CustomDialogListener{
@@ -72,7 +66,6 @@ public class QuizResultDialog extends Dialog implements View.OnClickListener{
             case R.id.btn_close:
                 dismiss();
                 Intent intent = new Intent(mContext,QuizActivity.class);
-                //mContext.startActivity(intent);
                 ((QuizActivity)mContext).finish();
                 break;
         }
