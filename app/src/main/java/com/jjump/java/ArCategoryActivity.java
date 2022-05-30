@@ -11,8 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
+
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -108,9 +107,11 @@ public class ArCategoryActivity extends AppCompatActivity {
                 }
                 else if(animal.equals("Cat")){
                     selectedModel=modelCat;
+                    mediaPlayer=MediaPlayer.create(ArCategoryActivity.this,R.raw.cat_sound);
                 }
                 else if(animal.equals("Bird")){
                     selectedModel=modelBird;
+                    mediaPlayer=MediaPlayer.create(ArCategoryActivity.this,R.raw.bird_sound);
                 }
                 else if(animal.equals("Deer")) {
                     selectedModel = modelDeer;
@@ -232,41 +233,61 @@ public class ArCategoryActivity extends AppCompatActivity {
                     TransformableNode andy = new TransformableNode(arFragment.getTransformationSystem());
                     if(selectedModel.equals(modelWolf)){
                         andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
+
+                        andy.getScaleController().setMinScale(0.2f);
+                        andy.getScaleController().setMaxScale(1.0f);
+                        andy.setLocalScale(new Vector3(0.5f, 0.5f, 0.5f));
+
                         andy.setParent(anchorNode);
                         andy.setRenderable(modelWolf);
                     }
                     else if(selectedModel.equals(modelBird)){
-                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 90f));
+                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
+
+                        andy.getScaleController().setMinScale(0.001f);
+                        andy.getScaleController().setMaxScale(1.0f);
+                        andy.setLocalScale(new Vector3(0.005f, 0.005f, 0.005f));
+
                         andy.setParent(anchorNode);
                         andy.setRenderable(modelBird);
                     }
                     else if(selectedModel.equals(modelCat)){
                         andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
+
+                        andy.getScaleController().setMinScale(0.2f);
+                        andy.getScaleController().setMaxScale(1.0f);
+                        andy.setLocalScale(new Vector3(0.2f, 0.2f, 0.2f));
+
                         andy.setParent(anchorNode);
                         andy.setRenderable(modelCat);
                     }
                     else if(selectedModel.equals(modelDog)){
-                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
-                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 90f));
-                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 0, 1f), 90f));
-                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
-                        andy.setWorldRotation(Quaternion.axisAngle(new Vector3(0, 0, 1f), -90f));
-                        andy.setLocalScale(new Vector3(0.01f,0.01f,0.01f));
+                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f,0,0),-90f));
+
+                        andy.getScaleController().setMinScale(0.2f);
+                        andy.getScaleController().setMaxScale(1.0f);
+                        andy.setLocalScale(new Vector3(0.3f, 0.3f, 0.3f));
+
                         andy.setParent(anchorNode);
                         andy.setRenderable(modelDog);
                     }
                     else if(selectedModel.equals(modelDeer)){
-                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
-                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 90f));
-                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 0, 1f), 90f));
-                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
-                        andy.setWorldRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
-                        andy.setWorldScale(new Vector3(0.01f,0.01f,0.01f));
+                        andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f,0,0),-90f));
+
+                        andy.getScaleController().setMinScale(0.2f);
+                        andy.getScaleController().setMaxScale(1.0f);
+                        andy.setLocalScale(new Vector3(0.3f, 0.3f, 0.3f));
+
                         andy.setParent(anchorNode);
                         andy.setRenderable(modelDeer);
                     }
                     else if(selectedModel.equals(modelFrog)){
                         andy.setLocalRotation(Quaternion.axisAngle(new Vector3(1f, 0, 0), -90f));
+
+                        andy.getScaleController().setMinScale(0.2f);
+                        andy.getScaleController().setMaxScale(1.0f);
+                        andy.setLocalScale(new Vector3(0.15f, 0.15f, 0.15f));
+
                         andy.setParent(anchorNode);
                         andy.setRenderable(modelFrog);
                     }

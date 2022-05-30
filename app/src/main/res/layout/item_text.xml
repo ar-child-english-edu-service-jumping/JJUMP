@@ -5,12 +5,12 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <Button
+    <TextView
         android:id="@+id/textItem"
         android:layout_width="125dp"
         android:layout_height="80dp"
         android:layout_margin="5dp"
-        android:background="@drawable/btn_select_effect"
+        android:background="@drawable/bg_text"
         android:fontFamily="@font/notosanskr_bold"
         android:gravity="center"
         android:text="textView"
