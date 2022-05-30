@@ -33,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
     public static long endTime=0;
 
     public static int quiz_taken_int;
+    public static String new_folder_name;
 
     private FragmentManager fragmentManager;
     private Fragment f1, f2, f3;
@@ -93,10 +94,8 @@ public class HomeActivity extends AppCompatActivity {
                         break;
 
                     case R.id.wordlist_tab:
-                        if (f2 == null){
-                            f2 = new WordlistFragment();
-                            getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, f2).commit();
-                        }
+                        f2 = new WordlistFragment();
+                        getSupportFragmentManager().beginTransaction().add(R.id.fragment_contatiner, f2).commit();
                         if (f1 != null) fragmentManager.beginTransaction().hide(f1).commit();
                         if (f2 != null) fragmentManager.beginTransaction().show(f2).commit();
                         if (f3 != null) fragmentManager.beginTransaction().hide(f3).commit();
