@@ -36,11 +36,11 @@
 
     <Button
         android:id="@+id/category_end_btn"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
+        android:layout_width="15dp"
+        android:layout_height="30dp"
         android:layout_gravity="top|left"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/abc_vector_test" />
+        android:background="@drawable/btn_back" />
 
 </FrameLayout>
