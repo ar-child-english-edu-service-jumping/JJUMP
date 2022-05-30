@@ -33,9 +33,17 @@ import com.google.mlkit.vision.text.Text.Element;
 import com.google.mlkit.vision.text.Text.Line;
 import com.google.mlkit.vision.text.Text.TextBlock;
 import com.jjump.java.HomeActivity;
+import com.jjump.java.data.RequestDto;
+import com.jjump.java.data.ResponseDto;
+import com.jjump.java.network.ApiInterface;
+import com.jjump.java.network.HttpClient;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -60,6 +68,11 @@ public class TextGraphic extends Graphic {
   private final Boolean showLanguageTag;
 
   public final int maxWordNum = 15;                 // Set maximum word list number shown in screen
+
+
+  private ApiInterface api;
+  String new_word;
+  String email;
 
 
   TextGraphic(
@@ -152,6 +165,7 @@ public class TextGraphic extends Graphic {
                   if (HomeActivity.textContainer.size() >= maxWordNum)               //if the place for new word not exists
                     HomeActivity.textContainer.remove(maxWordNum - 1);
                   HomeActivity.textContainer.add(0, temp);
+                  new_word = temp;
                 }
               }
 
