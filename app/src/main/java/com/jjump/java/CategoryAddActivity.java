@@ -50,35 +50,21 @@ public class CategoryAddActivity extends AppCompatActivity {
 
         adapter = new ItemAdapter(buildItemList());
         recyclerView.setAdapter(adapter);
-        searchView = findViewById(R.id.search_view);
-        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                // 입력받은 문자열 처리
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                // 입력란의 문자열이 바뀔 때 처리
-                return true;
-            }
-        });
     }
 
     // 상위아이템 큰박스 아이템을 10개 만듭니다.
     private List<Item> buildItemList() {
         List<Item> itemList = new ArrayList<>();
-        String[] itemText={"3.22","3.27","4.06","4.18","4.22","5.01","5.06",};
-        for (int i=6; i>=0; i--) {
+        String[] itemText={"3.27","4.13","4.29","5.16","5.28","5.31",};
+        for (int i=5; i>=0; i--) {
             Item item = new Item(itemText[i], buildSubItemList(i));
             itemList.add(item);
         }
         return itemList;
     }
 
-    String[][] wordFront={{"Dog", "Cat", "House"},{"Zoo","Tiger"},{"Hippo","Drum","Flag","Mouse"},{"Earth"},{"Pencil","Eraser","Notebook"},{"Key","Spoon","Fork","Milk"},{"Bread","Cake"}};
-    String[][] wordBack={{"개", "고양이", "집"},{"동물원","호랑이"},{"하마","드럼","깃발","쥐"},{"지구"},{"연필","지우개","노트북"},{"열쇠","숟가락","포크","우유"},{"빵","케이크"}};
+    String[][] wordFront={{"Pencil","Earth","Notebook"},{"Bird","Drum","Kangaroo","Dolphin"},{"Zoo","Frog"},{"Dog", "Cat", "House","Deer"},{"Key","Spoon","Fork","Milk"},{"Wolf"}};
+    String[][] wordBack={{"연필","지구","노트북"},{"새","드럼","캥거루","돌고래"},{"동물원","개구리"},{"개", "고양이", "집","사슴"},{"열쇠","숟가락","포크","우유"},{"늑대"}};
     // 그안에 존재하는 하위 아이템 박스(3개씩 보이는 아이템들)
     private List<SubItem> buildSubItemList(int i) {
         List<SubItem> subItemList = new ArrayList<>();
