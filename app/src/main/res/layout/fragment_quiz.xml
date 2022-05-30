@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".java.QuizFragment">
 
-    <ImageView
-        android:id="@+id/bg_wave"
-        android:scaleType="fitXY"
-        android:layout_width="match_parent"
-        android:layout_height="460dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="280dp"
-        android:src="@drawable/bg_quiz_wave"/>
 
     <LinearLayout
         android:id="@+id/question_numbers"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:orientation="horizontal"
         android:layout_marginTop="20dp"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -39,110 +31,164 @@
             android:id="@+id/question_2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginHorizontal="14dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="14dp"
             android:background="@drawable/btn_quiz_number"
-            android:text="2"/>
+            android:text="2" />
 
         <Button
             android:id="@+id/question_3"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginHorizontal="14dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="14dp"
             android:background="@drawable/btn_quiz_number"
-            android:text="3"/>
+            android:text="3" />
 
         <Button
             android:id="@+id/question_4"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginHorizontal="14dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="14dp"
             android:background="@drawable/btn_quiz_number"
-            android:text="4"/>
+            android:text="4" />
 
         <Button
             android:id="@+id/question_5"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginHorizontal="14dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="14dp"
             android:background="@drawable/btn_quiz_number"
-            android:text="5"/>
+            android:text="5" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_question"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/quiz_frame"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/notosanskr_bold"
-        android:text="meticulous"
-        android:textColor="#181818"
-        android:textSize="35dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/question_numbers" />
+        app:layout_constraintTop_toBottomOf="@id/question_numbers">
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:columnCount="2"
-        android:rowCount="2"
-        android:layout_marginTop="120dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_question">
 
         <Button
-            android:id="@+id/answer_1"
-            android:layout_width="170dp"
-            android:layout_height="130dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_quiz_answer"
-            android:fontFamily="@font/notosnaskr_medium"
-            android:text="세심한"
+            android:id="@+id/btn_question"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_sound_play"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/gif_question"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/img_question"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/avocado"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/notosanskr_bold"
+            android:text="Jellyfish"
             android:textColor="#181818"
-            android:textSize="18dp" />
-
-        <Button
-            android:id="@+id/answer_2"
-            android:layout_width="170dp"
-            android:layout_height="130dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_quiz_answer"
-            android:fontFamily="@font/notosnaskr_medium"
-            android:text="불안해하는"
-            android:textColor="#181818"
-            android:textSize="18dp" />
-
-        <Button
-            android:id="@+id/answer_3"
-            android:layout_width="170dp"
-            android:layout_height="130dp"
-            android:background="@drawable/btn_quiz_answer"
-            android:fontFamily="@font/notosnaskr_medium"
-            android:text="정교한"
-            android:textColor="#181818"
-            android:textSize="18dp" />
-
-        <Button
-            android:id="@+id/answer_4"
-            android:layout_width="170dp"
-            android:layout_height="130dp"
-            android:background="@drawable/btn_quiz_answer"
-            android:fontFamily="@font/notosnaskr_medium"
-            android:text="대단한"
-            android:textColor="#181818"
-            android:textSize="18dp" />
-
-    </GridLayout>
+            android:textSize="35dp" />
 
 
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="20dp">
 
 
+        <ImageView
+            android:id="@+id/bg_wave"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_gravity="bottom"
+            android:foregroundGravity="bottom"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_quiz_wave" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:rowCount="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <Button
+                android:id="@+id/answer_1"
+                android:layout_width="170dp"
+                android:layout_height="130dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/btn_quiz_answer"
+                android:fontFamily="@font/notosnaskr_medium"
+                android:text="물고기"
+                android:textColor="#181818"
+                android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/answer_2"
+                android:layout_width="170dp"
+                android:layout_height="130dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/btn_quiz_answer"
+                android:fontFamily="@font/notosnaskr_medium"
+                android:text="해파리"
+                android:textColor="#181818"
+                android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/answer_3"
+                android:layout_width="170dp"
+                android:layout_height="130dp"
+                android:background="@drawable/btn_quiz_answer"
+                android:fontFamily="@font/notosnaskr_medium"
+                android:text="사탕"
+                android:textColor="#181818"
+                android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/answer_4"
+                android:layout_width="170dp"
+                android:layout_height="130dp"
+                android:background="@drawable/btn_quiz_answer"
+                android:fontFamily="@font/notosnaskr_medium"
+                android:text="거북이"
+                android:textColor="#181818"
+                android:textSize="18dp" />
+
+        </GridLayout>
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

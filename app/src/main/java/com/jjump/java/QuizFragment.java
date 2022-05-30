@@ -2,17 +2,13 @@ package com.jjump.java;
 
 import static com.jjump.java.HomeActivity.quiz_taken_int;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
-import android.media.AudioAttributes;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.os.Handler;
 import android.util.DisplayMetrics;
@@ -24,9 +20,11 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.jjump.R;
 
 import java.util.ArrayList;
@@ -45,9 +43,14 @@ public class QuizFragment extends Fragment {
     private int quizBtnSize_current;
 
     //문제용 변수들
+    private View quizView;
+    private View previousQuestion;
     private TextView txtQuiz;
+    private ImageView gifQuiz;
+    private ImageView imgQuiz;
+    private Button btnQuiz;
     private Animation quiz_out;
-    private String[] quiz_set={"meticulous", "negligible" , "endemic", "altercation" , "capricious",""};
+    private String[] quiz_set={"Jellyfish", "지구" , "endemic", "altercation" , "capricious",""};
 
 
     // 4지 선다용 변수들
@@ -58,9 +61,9 @@ public class QuizFragment extends Fragment {
 
     private Button targetBtn;
 
-    private String[][] questions = {{"세심한", "불안해하는", "정교한", "대단한"}, {"대단한", "하찮은", "사소한", "높은"}, {"토착의", "새로운", "구시대적인", "정밀한"}, {"장난", "토론", "언쟁", "소모"}, {"기분좋은", "피곤한", "장난끼많은", "변덕스러운"}};
+    private String[][] questions = { {"Earth", "Month", "Date", "Ocean"}, {"Rocket", "Moon", "Sign", "Train"}, {"Avocado", "Apple", "Orange", "Cucumber"}, {"Dog", "Pig", "Frog", "Cat"}, {"Dog", "Pig", "Frog", "Cat"}};
 
-    private int[] answers = {0, 1, 1, 2, 3, -1};
+    private int[] answers = {1, 0, 0, 0, 3, -1};
 
     private int state = 0;
     private int max_question_num = 5;
@@ -100,6 +103,24 @@ public class QuizFragment extends Fragment {
         quizBtnSize_current = metrics.widthPixels * 15 / 100;
 
         txtQuiz=rootView.findViewById(R.id.tv_question);
+        gifQuiz=rootView.findViewById(R.id.gif_question);
+        imgQuiz=rootView.findViewById(R.id.img_question);
+        btnQuiz=rootView.findViewById(R.id.btn_question);
+        btnQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MediaPlayer mediaPlayer=MediaPlayer.create(getContext(),R.raw.cat_sound);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mediaPlayer.stop();
+                        mediaPlayer.release();
+                    }
+                });
+            }
+        });
+        quizView=txtQuiz;
         quiz_out= AnimationUtils.loadAnimation(getContext(),R.anim.quiz_out);
 
         normalFont = Typeface.createFromAsset(getActivity().getAssets(), "notosnaskr_medium.otf");
@@ -169,9 +190,9 @@ public class QuizFragment extends Fragment {
             score += 20;
         }
 
-
         // 문제 교체
-        txtQuiz.startAnimation(quiz_out);
+        quizView.startAnimation(quiz_out);
+        previousQuestion=quizView;
 
         // 정답 표시
         switch (answers[state]) {
@@ -214,7 +235,24 @@ public class QuizFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                txtQuiz.setText(quiz_set[state+1]);
+
+                if(state==0){
+                    txtQuiz.setText(quiz_set[state+1]);
+                }else if(state==1){
+                    quizView.setVisibility(View.INVISIBLE);
+                    quizView=gifQuiz;
+                    GlideDrawableImageViewTarget gif_rocket=new GlideDrawableImageViewTarget(gifQuiz);
+                    Glide.with(getActivity()).load(R.drawable.gif_rocket).into(gif_rocket);
+                    quizView.setVisibility(View.VISIBLE);
+                }else if(state==2){
+                    quizView.setVisibility(View.INVISIBLE);
+                    quizView=imgQuiz;
+                    quizView.setVisibility(View.VISIBLE);
+                }else if(state==3){
+                    quizView.setVisibility(View.INVISIBLE);
+                    quizView=btnQuiz;
+                    quizView.setVisibility(View.VISIBLE);
+                }
 
                 // Quiz number changes
                 quiz_nums.get(state).setBackgroundResource(R.drawable.btn_quiz_number);     // background
