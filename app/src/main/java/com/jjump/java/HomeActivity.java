@@ -64,6 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         textContainer = new ArrayList<>();
         tempDB=new ArrayList<>();
         tempDB.add("Yellow"); tempDB.add("Duck"); tempDB.add("Blue"); tempDB.add("Horse"); tempDB.add("Green"); tempDB.add("Frog"); tempDB.add("See");
+        tempDB.add("Wolf");tempDB.add("Pond");tempDB.add("Scissors");tempDB.add("Thread");tempDB.add("Needle");
 
 
         //for hide state bar
