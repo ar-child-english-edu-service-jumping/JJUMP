@@ -60,8 +60,12 @@ public class WordlistFragment extends Fragment {
     private boolean fab_clicked=false;
 
     //배열을 arrayList로 바꿔서 요소 추가 가능하도록
-    String[] text = {"동물 친구들", "다시 보고 싶어용", "헷갈려요","스크롤 되나염?"};
-    List text_array = new ArrayList (Arrays.asList(text));
+    String[] text = {"다시 보고 싶어용", "헷갈려요","내가 좋아하는 단어들"};
+    String newFolder = HomeActivity.new_folder_name;
+    int position = 0;
+    int newTextLength = text.length +1;
+    String[] newText = new String[newTextLength];
+    //List text_array = new ArrayList (Arrays.asList(text));
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,6 +75,10 @@ public class WordlistFragment extends Fragment {
 
         //bookmark invisible
         HomeActivity.bookmarkFlag = false;
+
+        if (HomeActivity.new_folder_name != null) {
+            Log.d("폴더 명", HomeActivity.new_folder_name);
+        }
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -83,12 +91,6 @@ public class WordlistFragment extends Fragment {
         rotateClose= AnimationUtils.loadAnimation(getContext(),R.anim.fab_close);
         fromBottom= AnimationUtils.loadAnimation(getContext(),R.anim.fab_up);
         toBottom= AnimationUtils.loadAnimation(getContext(),R.anim.fab_down);
-
-        //add folder to folder name array list
-        text_array.add("동물 친구들");
-        text_array.add("다시 보고 싶어용");
-        text_array.add("헷갈려요");
-        text_array.add("스크롤 되나염?");
 
         hide_view = rootView.findViewById(R.id.hide_view);
 
@@ -203,14 +205,32 @@ public class WordlistFragment extends Fragment {
 
         ListView listview = dialog.findViewById(R.id.listview_folder);
 
-        // list item in dialog showing existing folders
-        DialogAdapter dialogAdapter=new DialogAdapter();
-        for(int i=0;i<text.length;i++) {
-            dialogAdapter.addItem(text[i]);
+        if(HomeActivity.new_folder_name != null){
+            for( int i = 0; i < newTextLength; i++)  {
+                if(i < position)    {
+                    newText[i] = text[i];
+                } else if( i == position)   {
+                    newText[i] = HomeActivity.new_folder_name;
+                } else {
+                    newText[i] = text[i - 1];
+                }
+            }
+            DialogAdapter dialogAdapter=new DialogAdapter();
+            for(int i=0;i<newText.length;i++) {
+                dialogAdapter.addItem(newText[i]);
+            }
+            adapter.notifyDataSetChanged();
+            listview.setAdapter(dialogAdapter);
+        }else{
+            DialogAdapter dialogAdapter=new DialogAdapter();
+            for(int i=0;i<text.length;i++) {
+                dialogAdapter.addItem(text[i]);
+            }
+            adapter.notifyDataSetChanged();
+            listview.setAdapter(dialogAdapter);
         }
-        adapter.notifyDataSetChanged();
+        // list item in dialog showing existing folders
 
-        listview.setAdapter(dialogAdapter);
         //리스트뷰 click event
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -232,7 +252,9 @@ public class WordlistFragment extends Fragment {
         btn_add_folder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"몰라몰라잉 ㅜ~",Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(getContext(),CategoryAddActivity.class);
+                startActivity(intent);
+                dialog.dismiss();
             }
         });
     }
@@ -255,13 +277,31 @@ public class WordlistFragment extends Fragment {
 
         listview = dialog.findViewById(R.id.listview_folder_select);
         // list item in dialog showing existing folders
-        DialogAdapter dialogAdapter=new DialogAdapter();
-        for(int i=0;i<text.length;i++) {
-            dialogAdapter.addItem(text[i]);
+        if(HomeActivity.new_folder_name != null){
+            for( int i = 0; i < newTextLength; i++)  {
+                if(i < position)    {
+                    newText[i] = text[i];
+                } else if( i == position)   {
+                    newText[i] = HomeActivity.new_folder_name;
+                } else {
+                    newText[i] = text[i - 1];
+                }
+            }
+            DialogAdapter dialogAdapter=new DialogAdapter();
+            for(int i=0;i<newText.length;i++) {
+                dialogAdapter.addItem(newText[i]);
+            }
+            adapter.notifyDataSetChanged();
+            listview.setAdapter(dialogAdapter);
+        }else{
+            DialogAdapter dialogAdapter=new DialogAdapter();
+            for(int i=0;i<text.length;i++) {
+                dialogAdapter.addItem(text[i]);
+            }
+            adapter.notifyDataSetChanged();
+            listview.setAdapter(dialogAdapter);
         }
-        adapter.notifyDataSetChanged();
 
-        listview.setAdapter(dialogAdapter);
         //리스트뷰 click event
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -298,13 +338,30 @@ public class WordlistFragment extends Fragment {
 
         listview = dialog.findViewById(R.id.listview_folder_select);
         // list item in dialog showing existing folders
-        DialogAdapter dialogAdapter=new DialogAdapter();
-        for(int i=0;i<text.length;i++) {
-            dialogAdapter.addItem(text[i]);
+        if(HomeActivity.new_folder_name != null){
+            for( int i = 0; i < newTextLength; i++)  {
+                if(i < position)    {
+                    newText[i] = text[i];
+                } else if( i == position)   {
+                    newText[i] = HomeActivity.new_folder_name;
+                } else {
+                    newText[i] = text[i - 1];
+                }
+            }
+            DialogAdapter dialogAdapter=new DialogAdapter();
+            for(int i=0;i<newText.length;i++) {
+                dialogAdapter.addItem(newText[i]);
+            }
+            adapter.notifyDataSetChanged();
+            listview.setAdapter(dialogAdapter);
+        }else{
+            DialogAdapter dialogAdapter=new DialogAdapter();
+            for(int i=0;i<text.length;i++) {
+                dialogAdapter.addItem(text[i]);
+            }
+            adapter.notifyDataSetChanged();
+            listview.setAdapter(dialogAdapter);
         }
-        adapter.notifyDataSetChanged();
-
-        listview.setAdapter(dialogAdapter);
         //리스트뷰 click event
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
