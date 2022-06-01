@@ -12,12 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="125dp"
-        android:layout_gravity="bottom"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/bg_bottom_wave" />
+    <Button
+        android:id="@+id/ar_end_btn"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_gravity="top|left"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/abc_vector_test" />
 
 </FrameLayout>

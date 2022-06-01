@@ -1,7 +1,6 @@
 package com.jjump.java.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +9,11 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jjump.R;
-import com.jjump.java.CameraXLivePreviewActivity;
-import com.jjump.java.data.WordlistDates;
 
 import java.util.ArrayList;
 
+
+//단어 인식 화면에서 추출된 단어를 리사이클러뷰로 보여주기 위함
 public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder>{
     private ArrayList<String> mData = null ;
 

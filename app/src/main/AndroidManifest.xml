@@ -26,9 +26,26 @@
     </queries>
 
     <application
+        android:allowBackup="true"
         android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".java.CategoryAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".java.ArCategoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".java.AnimalCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".java.CategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".java.QuizActivity"
+            android:exported="true" />
         <activity
             android:name=".java.ArActivity"
             android:exported="false" />
@@ -36,26 +53,19 @@
             android:name=".java.QuizBottomActivity"
             android:exported="true" />
         <activity
-            android:name=".java.WordlistActivity"
-            android:exported="true" />
-
-        <activity
             android:name=".java.HomeActivity"
             android:exported="true" />
-
         <activity
             android:name=".java.CameraXLivePreviewActivity"
             android:exported="true" />
         <activity
             android:name=".java.LoginActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <meta-data
@@ -68,7 +78,6 @@
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
-
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />

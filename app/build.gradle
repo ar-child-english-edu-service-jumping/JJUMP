@@ -114,6 +114,22 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0' //bottom navigation bar
 
     implementation 'com.google.android.material:material:1.3.0-alpha01' // bottom sheet
+
+    implementation 'com.dinuscxj:circleprogressbar:1.3.0' // CircleProgressBar
+
+    implementation 'com.github.bumptech.glide:glide:3.7.0' //gif
+
+    implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:3.0.0'  //card flip animation
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.8.1' //retrofit
+
+    implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.3.0'  // custom bottom navigation bar
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4' // chart
+
+    implementation 'com.google.android.material:material:1.4.0'      // floating action button
+
+    implementation 'nl.dionsegijn:konfetti:1.1.0'   //confetti animation
 }
 
 configurations {
@@ -123,7 +139,35 @@ configurations {
 }
 apply plugin: 'com.google.ar.sceneform.plugin'
 
-sceneform.asset('sampledata/models/chuteira.fbx',
+
+sceneform.asset('sampledata/wolf.obj',
         'default',
-        'sampledata/models/chuteira.sfa',
-        'src/main/res/raw/chuteira')
+        'sampledata/wolf.sfa',
+        'src/main/res/raw/wolf')
+
+sceneform.asset('sampledata/bird.obj',
+        'default',
+        'sampledata/bird.sfa',
+        'src/main/res/raw/bird')
+
+sceneform.asset('sampledata/dog.obj',
+        'default',
+        'sampledata/dog.sfa',
+        'src/main/res/raw/dog')
+
+
+sceneform.asset('sampledata/cat.obj',
+        'default',
+        'sampledata/cat.sfa',
+        'src/main/res/raw/cat')
+
+sceneform.asset('sampledata/deer.obj',
+        'default',
+        'sampledata/deer.sfa',
+        'src/main/res/raw/deer')
+
+sceneform.asset('sampledata/frog.obj',
+        'default',
+        'sampledata/frog.sfa',
+        'src/main/res/raw/frog')
+

@@ -16,16 +16,23 @@
 
 package com.jjump.java;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Size;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -48,12 +55,20 @@ import com.google.android.gms.common.annotation.KeepName;
 import com.google.mlkit.common.MlKitException;
 import com.jjump.R;
 import com.jjump.java.adapter.TextAdapter;
+import com.jjump.java.data.RequestDto;
+import com.jjump.java.data.ResponseDto;
+import com.jjump.java.network.ApiInterface;
+import com.jjump.java.network.HttpClient;
 import com.jjump.java.textdetector.TextGraphic;
 import com.jjump.java.textdetector.TextRecognitionProcessor;
 import com.jjump.java.preference.PreferenceUtils;
 import com.google.mlkit.vision.text.korean.KoreanTextRecognizerOptions;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /** Live preview demo app for ML Kit APIs using CameraX. */
 @KeepName
@@ -78,11 +93,34 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
   private CameraSelector cameraSelector;
 
   public static TextAdapter textAdapter;
+  private ApiInterface api;
+  String new_word;
+  String email;
+
+  private Button btn_guide_check;
+  private Button btn_back;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Log.d(TAG, "onCreate");
+
+    //vision guide dialog
+    Dialog dialog=new Dialog(this);
+    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+    dialog.setContentView(R.layout.dialog_vision_guide);
+
+    dialog.show();
+    dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    dialog.getWindow().getAttributes().windowAnimations=R.style.DialogAnimation;
+    btn_guide_check = dialog.findViewById(R.id.btn_guide_check);
+    btn_guide_check.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        dialog.dismiss();
+      }
+    });
 
     if (savedInstanceState != null) {
       selectedModel = savedInstanceState.getString(TEXT_RECOGNITION_KOREAN, TEXT_RECOGNITION_KOREAN);
@@ -99,6 +137,13 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
       Log.d(TAG, "graphicOverlay is null");
     }
 
+    btn_back = findViewById(R.id.btn_back);
+    btn_back.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        finish();
+      }
+    });
     ToggleButton facingSwitch = findViewById(R.id.facing_switch);
     facingSwitch.setOnCheckedChangeListener(this);
 
@@ -123,10 +168,33 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
       @Override
       public void onItemClick(View v, int position) {
         Intent intent=new Intent(getApplicationContext(),ArActivity.class);
+        //word에 post하기
+        api = HttpClient.getRetrofit().create( ApiInterface.class );
+        getWordMean();
+        intent.putExtra("model",HomeActivity.textContainer.get(position));
         startActivity(intent);
-        finish();
       }
     });
+  }
+
+  public void getWordMean() {
+    RequestDto reqWordMeanData = new RequestDto( email);
+    reqWordMeanData.setWord(new_word);
+    Call<ResponseDto> call = api.requestWordMean( reqWordMeanData );
+
+    // 비동기로 백그라운드 쓰레드로 동작
+    call.enqueue( new Callback<ResponseDto>() {
+      @Override
+      public void onResponse(Call<ResponseDto> call, Response<ResponseDto> response) {
+        Log.i("my tag", response.body().toString());
+      }
+
+      @Override
+      public void onFailure(Call<ResponseDto> call, Throwable t) {
+        Log.i("my tag", "fail!!!!!!!!!!!!!!!!");
+        Log.i("erre", t.toString());
+      }
+    } );
   }
 
   @Override

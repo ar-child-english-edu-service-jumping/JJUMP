@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".java.AnimalCategoryActivity">
+
+    <ImageView
+        android:id="@+id/backgroud_top_wave"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_top_wave"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ic_logo"
+        android:layout_width="94dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_logo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/folder_name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backgroud_top_wave">
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="13dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="20dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitXY"
+            android:src="@drawable/btn_back_black"
+            android:background="#00FFFFFF"/>
+
+        <TextView
+            android:id="@+id/folder_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="동물 친구들"
+            android:textSize="16dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/notosanskr_bold"
+            android:textColor="#181818"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="530dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/folder_name_layout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/word_1"
+                android:layout_width="350dp"
+                android:layout_height="120dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/btn_quiz_answer">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="76dp"
+                    android:layout_marginTop="48dp"
+                    android:fontFamily="@font/cookierun_regular"
+                    android:text="Horse"
+                    android:textSize="15dp"
+                    android:textColor="#181818"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginRight="76dp"
+                    android:fontFamily="@font/cookierun_regular"
+                    android:text="말"
+                    android:textColor="#181818"
+                    android:textSize="15dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/word_2"
+                android:layout_width="350dp"
+                android:layout_height="120dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@drawable/btn_quiz_answer"
+                app:layout_constraintTop_toBottomOf="@id/word_1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="76dp"
+                    android:layout_marginTop="48dp"
+                    android:fontFamily="@font/cookierun_regular"
+                    android:text="Wolf"
+                    android:textSize="15dp"
+                    android:textColor="#181818"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginRight="76dp"
+                    android:fontFamily="@font/cookierun_regular"
+                    android:text="늑대"
+                    android:textColor="#181818"
+                    android:textSize="15dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/word_3"
+                android:layout_width="350dp"
+                android:layout_height="120dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@drawable/btn_quiz_answer"
+                app:layout_constraintTop_toBottomOf="@id/word_2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="76dp"
+                    android:layout_marginTop="48dp"
+                    android:fontFamily="@font/cookierun_regular"
+                    android:text="Cat"
+                    android:textSize="15dp"
+                    android:textColor="#181818"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginRight="76dp"
+                    android:fontFamily="@font/cookierun_regular"
+                    android:text="고양이"
+                    android:textColor="#181818"
+                    android:textSize="15dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/word_4"
+                android:layout_width="350dp"
+                android:layout_height="120dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@drawable/btn_quiz_answer"
+                app:layout_constraintTop_toBottomOf="@id/word_3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="76dp"
+                    android:layout_marginTop="48dp"
+                    android:fontFamily="@font/cookierun_regular"
+                    android:text="Kangaroo"
+                    android:textSize="15dp"
+                    android:textColor="#181818"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginRight="76dp"
+                    android:fontFamily="@font/cookierun_regular"
+                    android:text="캥거루"
+                    android:textColor="#181818"
+                    android:textSize="15dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/word_5"
+                android:layout_width="350dp"
+                android:layout_height="120dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@drawable/btn_quiz_answer"
+                app:layout_constraintTop_toBottomOf="@id/word_4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="76dp"
+                    android:layout_marginTop="48dp"
+                    android:fontFamily="@font/cookierun_regular"
+                    android:text="Frog"
+                    android:textSize="15dp"
+                    android:textColor="#181818"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginRight="76dp"
+                    android:fontFamily="@font/cookierun_regular"
+                    android:text="개구리"
+                    android:textColor="#181818"
+                    android:textSize="15dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

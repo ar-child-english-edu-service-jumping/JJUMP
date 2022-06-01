@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:background="@drawable/round_dialog">
+
+    <TextView
+        android:id="@+id/sentence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="귀여운 동물 친구들을 모아보세요!"
+        android:textSize="22dp"
+        android:textColor="#181818"
+        android:fontFamily="@font/dodamdodam"/>
+
+    <GridLayout
+        android:id="@+id/character_grid"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sentence"
+        android:layout_marginTop="10dp"
+        android:columnCount="3"
+        android:rowCount="3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation = "horizontal">
+
+        <Button
+            android:id="@+id/btn_lion"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ch_lion"/>
+        <Button
+            android:id="@+id/btn_elephant"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ch_elephant"/>
+        <Button
+            android:id="@+id/btn_cat"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ch_cat"/>
+        <Button
+            android:id="@+id/btn_bear"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ch_bear_disable"/>
+        <Button
+            android:id="@+id/btn_rabbit"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ch_rabbit_disable"/>
+        <Button
+            android:id="@+id/btn_penguin"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ch_penguin_disable"/>
+        <Button
+            android:id="@+id/btn_deer"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ch_deer_disable"/>
+        <Button
+            android:id="@+id/btn_racoon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ch_racoon_disable"/>
+        <Button
+            android:id="@+id/btn_pig"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ch_pig_disable"/>
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/btn_confirm_character"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_confirm_character"
+        android:text="골랐어요!"
+        android:textSize="18dp"
+        android:textColor="#181818"
+        android:fontFamily="@font/dodamdodam"
+        app:layout_constraintTop_toBottomOf="@+id/character_grid"/>
+    <ImageView
+        android:id="@+id/ic_finger"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="33dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:visibility="invisible"
+        android:src="@drawable/gif_finger"
+        android:rotationX="180"
+        android:rotation="90"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@
         android:layout_width="125dp"
         android:layout_height="80dp"
         android:layout_margin="5dp"
-        android:background="@drawable/bg_text"
+        android:background="@drawable/btn_select_effect"
         android:fontFamily="@font/notosanskr_bold"
         android:gravity="center"
         android:text="textView"

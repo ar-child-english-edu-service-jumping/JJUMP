@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="12dp"
+    android:layout_marginBottom="12dp">
+
+    <com.wajahatkarim3.easyflipview.EasyFlipView
+        android:layout_width="145dp"
+        android:layout_height="105dp"
+        app:autoFlipBack="false"
+        app:flipDuration="400"
+        app:flipEnabled="true"
+        app:flipFrom="right"
+        app:flipOnTouch="true"
+        app:flipType="horizontal">
+
+        <!-- Back Layout Goes Here -->
+        <TextView
+            android:id="@+id/card_back"
+            android:layout_width="145dp"
+            android:layout_height="105dp"
+            android:background="@drawable/btn_one_word"
+            android:backgroundTint="#FFE889"
+            android:fontFamily="@font/cookierun_regular"
+            android:gravity="center"
+            android:text="고양이"
+            android:textColor="#181818"
+            android:textSize="18dp" />
+
+
+        <!-- Front Layout Goes Here -->
+        <TextView
+            android:id="@+id/card_front"
+            android:layout_width="145dp"
+            android:layout_height="105dp"
+            android:background="@drawable/btn_one_word"
+            android:fontFamily="@font/cookierun_regular"
+            android:gravity="center"
+            android:text="Cat"
+            android:textColor="#181818"
+            android:textSize="18dp" />
+
+    </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+    <ImageButton
+        android:id="@+id/bookmark"
+        android:visibility="visible"
+        android:layout_marginTop="-9dp"
+        android:layout_marginStart="80dp"
+        android:layout_width="65dp"
+        android:layout_height="62dp"
+        android:scaleType="fitXY"
+        android:backgroundTint="#00ffffff"
+        android:src="@drawable/ic_bookmark"/>
+
+</FrameLayout>
