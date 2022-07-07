@@ -1,4 +1,4 @@
-![Application Icon](https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/logo.png) 
+<img src=https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/logo.png width=250 height=250>
 
 ### 쩜프는 실시간 텍스트 인식 기술과 증강 현실 기술을 응용하여 아이들에게 보다 주도적인 학습 능력 함양에 도움을 줄 수 있도록 기획된 어린이 영어 독서 교육 단어장 어플리케이션입니다.
 
@@ -9,11 +9,16 @@
 
 # Base Concept
 - Project Structure
-![Structure](https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/structure.png) 
+<img src=https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/structure.png width=600 height=308>
 
 - Database Schema
+<img src=https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/schema.png width=531 height=441>
 
-![Schema](https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/schema.png) 
+- SWOT
+<img src=https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/swot.jpg>
+
+- Cross SWOT
+<img src=https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/cross_swot.png>
 
 # What we do?
 
