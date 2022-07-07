@@ -1,5 +1,4 @@
-<img src=https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/logo.png width=1287 height=250>
-
+![logo](https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/logo.png)
 -----------------
 
 # Who are we?
