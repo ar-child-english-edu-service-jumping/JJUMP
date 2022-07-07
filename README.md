@@ -1,6 +1,4 @@
-<img src=https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/logo.png width=250 height=250>
-
-### 쩜프는 실시간 텍스트 인식 기술과 증강 현실 기술을 응용하여 아이들에게 보다 주도적인 학습 능력 함양에 도움을 줄 수 있도록 기획된 어린이 영어 독서 교육 단어장 어플리케이션입니다.
+<img src=https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/logo.png width=1287 height=250>
 
 -----------------
 
