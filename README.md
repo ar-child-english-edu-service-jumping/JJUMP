@@ -1,4 +1,11 @@
 ![logo](https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/logo.png)
+
+
+
+https://user-images.githubusercontent.com/33649883/185517229-b82321dd-5445-49f3-81f0-2f57ca84efc0.mp4
+
+
+
 -----------------
 
 # Who are we?
@@ -25,7 +32,7 @@
 
 ![Result3](https://github.com/qkralsrl1029/JJUMP/blob/master/Docs/images/result3.png) 
 
-# Code Details
+# Code Details ( 
 
 - AR module
 
