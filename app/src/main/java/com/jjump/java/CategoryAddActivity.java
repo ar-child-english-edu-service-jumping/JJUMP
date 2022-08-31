@@ -40,6 +40,7 @@ public class CategoryAddActivity extends AppCompatActivity {
                 //edittext에 입력된 새 폴더 이름 저장
                 edit_folder_name = findViewById(R.id.edit_folder_name);
                 HomeActivity.new_folder_name = edit_folder_name.getText().toString();
+                HomeActivity.bookmarkFlag=false;
                 finish();
             }
         });
@@ -55,7 +56,7 @@ public class CategoryAddActivity extends AppCompatActivity {
     // 상위아이템 큰박스 아이템을 10개 만듭니다.
     private List<Item> buildItemList() {
         List<Item> itemList = new ArrayList<>();
-        String[] itemText={"3.27","4.13","4.29","5.16","5.28","5.31",};
+        String[] itemText={"3.27","5.13","5.29","7.16","7.28","8.31",};
         for (int i=5; i>=0; i--) {
             Item item = new Item(itemText[i], buildSubItemList(i));
             itemList.add(item);

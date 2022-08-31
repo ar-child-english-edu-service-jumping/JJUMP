@@ -21,6 +21,7 @@ public class AnimalCategoryActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                HomeActivity.bookmarkFlag=false;
                 finish();
             }
         });

@@ -119,6 +119,7 @@ public class WordlistFragment extends Fragment {
         fab_ar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                HomeActivity.bookmarkFlag=false;
                 onAddButtonClicked();
                 onArButtonClicked();
             }
@@ -131,7 +132,7 @@ public class WordlistFragment extends Fragment {
     // 상위아이템 큰박스 아이템을 10개 만듭니다.
     private List<Item> buildItemList() {
         List<Item> itemList = new ArrayList<>();
-        String[] itemText={"3.27","4.13","4.29","5.16","5.28","5.31",};
+        String[] itemText={"3.27","5.13","5.29","7.16","7.28","8.31",};
         for (int i=5; i>=0; i--) {
             Item item = new Item(itemText[i], buildSubItemList(i));
             itemList.add(item);

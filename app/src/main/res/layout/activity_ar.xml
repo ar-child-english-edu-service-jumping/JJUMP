@@ -14,17 +14,17 @@
 
     <Button
         android:id="@+id/ar_end_btn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="15dp"
+        android:layout_height="30dp"
         android:layout_gravity="top|left"
         android:layout_marginLeft="18dp"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/abc_vector_test" />
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_back" />
 
     <Button
         android:id="@+id/ar_mic_btn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="top|right"
         android:layout_marginTop="18dp"
         android:layout_marginRight="18dp"

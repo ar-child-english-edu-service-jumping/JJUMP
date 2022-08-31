@@ -91,8 +91,7 @@ public class ArCategoryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         ArrayList<String> animal_category=new ArrayList<>();
-        animal_category.add("Dolphin"); animal_category.add("Dog"); animal_category.add("Cat"); animal_category.add("Bird"); animal_category.add("Wolf"); animal_category.add("Deer"); animal_category.add("Elephant");
-        animal_category.add("Rabbit"); animal_category.add("Kangaroo"); animal_category.add("Frog");
+        animal_category.add("Wolf"); animal_category.add("Dog"); animal_category.add("Cat"); animal_category.add("Deer"); animal_category.add("Frog"); animal_category.add("Bird");
         TextAdapter textAdapter=new TextAdapter(animal_category);
         recyclerView.setAdapter(textAdapter);
 

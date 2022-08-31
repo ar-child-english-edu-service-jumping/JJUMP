@@ -164,6 +164,13 @@ public class TextGraphic extends Graphic {
                 if (!HomeActivity.textContainer.contains(temp)) {     //only for the new word
                   if (HomeActivity.textContainer.size() >= maxWordNum)               //if the place for new word not exists
                     HomeActivity.textContainer.remove(maxWordNum - 1);
+                  temp.replace(",","");
+                  temp.replace(" ","");
+                  temp.replace(".","");
+                  temp.replace("'","");
+                  temp.replace("\"","");
+                  temp.replace("?","");
+                  temp.replace("!","");
                   HomeActivity.textContainer.add(0, temp);
                   new_word = temp;
                 }
