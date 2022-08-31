@@ -8,8 +8,8 @@
     android:layout_marginBottom="12dp">
 
     <com.wajahatkarim3.easyflipview.EasyFlipView
-        android:layout_width="145dp"
-        android:layout_height="105dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:autoFlipBack="false"
         app:flipDuration="400"
         app:flipEnabled="true"

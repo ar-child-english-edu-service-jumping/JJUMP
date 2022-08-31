@@ -102,6 +102,24 @@ public class ArActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        Button btn_mic=findViewById(R.id.ar_mic_btn);
+        btn_mic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MediaPlayer mediaPlayer2;
+                mediaPlayer2=MediaPlayer.create(ArActivity.this,R.raw.wolf_pronounce);
+                mediaPlayer2.start();
+                mediaPlayer2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mediaPlayer2.stop();
+                        mediaPlayer2.release();
+                    }
+                });
+
+            }
+        });
     }
 
     public static boolean checkIsSupportedDeviceOrFinish(final Activity activity) {
